@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Mandarin | Tecnología & Hogar</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4; color: #333; }
+        header { background: #fff; padding: 20px; text-align: center; border-bottom: 3px solid #ff8c00; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; color: #ff8c00; font-size: 2.5rem; }
+
+        .filtros { text-align: center; padding: 20px; position: sticky; top: 0; background: #f4f4f4; z-index: 100; }
+        .btn-filtro { background: #fff; border: 2px solid #ff8c00; color: #ff8c00; padding: 10px 20px; margin: 5px; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .btn-filtro.activo { background: #ff8c00; color: white; }
+
+        .contenedor-productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+
+        /* Mejora de fotos: ya no se ven estiradas */
+        .producto { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; padding-bottom: 15px; cursor: pointer; }
+        .producto img { width: 100%; height: 200px; object-fit: contain; background: #ebebeb; padding: 10px; box-sizing: border-box; }
+        .producto h3 { font-size: 1rem; margin: 15px 10px; height: 40px; overflow: hidden; }
+
+        /* Ventana de Detalles (Modal) */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+        .modal-contenido { background: white; margin: 5% auto; padding: 20px; width: 90%; max-width: 600px; border-radius: 15px; position: relative; text-align: center; }
+        .cerrar { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
+        .modal-img { width: 100%; max-height: 300px; object-fit: contain; margin-bottom: 20px; }
+        .modal-desc { text-align: left; line-height: 1.6; margin-bottom: 20px; }
+
+        .btn-whatsapp { background: #25d366; color: white; text-decoration: none; padding: 12px 20px; border-radius: 5px; display: inline-block; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tienda Mandarin</h1>
+    <p>Tecnología & Hogar - 15 años de trayectoria</p>
+</header>
+
+<div class="filtros">
+    <button class="btn-filtro activo" onclick="filtrar('todos', this)">Todos</button>
+    <button class="btn-filtro" onclick="filtrar('tecnologia', this)">Tecnología</button>
+    <button class="btn-filtro" onclick="filtrar('hogar', this)">Hogar & Varios</button>
+</div>
+
+<div id="lista-productos" class="contenedor-productos"></div>
+
+<!-- La ventana emergente -->
+<div id="miModal" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <img id="imgModal" class="modal-img" src="">
+        <h2 id="tituloModal"></h2>
+        <div id="descModal" class="modal-desc"></div>
+        <a id="linkWapp" href="#" class="btn-whatsapp" target="_blank">Consultar por WhatsApp</a>
+    </div>
+</div>
+
+<script>
+    const productos = [
+        // PRODUCTOS CON DETALLE COMPLETO
+        {
+            nombre: "Samsung Galaxy S26 Ultra 12/256",
+            cat: "tecnologia",
+            img: "fotos/s26ultra.jpg",
+            desc: "Dispositivo insignia con IA avanzada (lanzado a principios de 2026). Cámara de 200 MP mejorada, procesador personalizado de alto rendimiento y pantalla de 6,9 pulgadas con privacidad integrada. Batería de 5000 mAh y 7 años de soporte."
+        },
+        {
+            nombre: "Samsung Galaxy S26 Plus 12/512Gb",
+            cat: "tecnologia",
+            img: "fotos/samsungs26plus.png",
+            desc: "Gama alta premium (Marzo 2026). Pantalla Dynamic AMOLED 2X de 6.7 QHD+, procesador de última generación y cámara de 50MP. Integra funciones avanzadas de Galaxy AI y Android 16."
+        },
+        {
+            nombre: "Xiaomi Note 15 Pro 8/256Gb",
+            cat: "tecnologia",
+            img: "fotos/xiaomi15pro.png",
+            desc: "Gama media-alta (Edición 2026). Pantalla AMOLED de 6.8 (120Hz, 3200 nits) y cámara principal de 200 MP. Procesador Dimensity 7400 Ultra y batería gigante de 6500 mAh."
+        },
+
+        // EL RESTO DEL CATÁLOGO (Para completar descripción luego)
+        { nombre: "Motorola 60 Fusion 12/256Gb", cat: "tecnologia", img: "fotos/Moto60fusion.jpg", desc: "Consultanos por las especificaciones completas de este equipo Motorola." },
+        { nombre: "Motorola G06 Power 4/256", cat: "tecnologia", img: "fotos/MotoG06-Power.jpg", desc: "Equipo potente con gran autonomía. Consultanos stock." },
+        { nombre: "Motorola G17 Power 4/256Gb", cat: "tecnologia", img: "fotos/motorolag17power.png", desc: "Lo nuevo de la línea Power de Motorola." },
+        { nombre: "Motorola G86 8/256Gb", cat: "tecnologia", img: "fotos/motorola.jpg", desc: "Equilibrio perfecto entre rendimiento y precio." },
+        { nombre: "Xiaomi Note 15 Pro Plus 8/256Gb", cat: "tecnologia", img: "fotos/xiaomi15proplus.jpg", desc: "La versión más potente de la serie Note 15." },
+        { nombre: "Xiaomi Pad 7 8/128Gb", cat: "tecnologia", img: "fotos/xiaomipad.jpg", desc: "Tablet ideal para productividad y estudio." },
+        { nombre: "Xiaomi M8 8/526Gb", cat: "tecnologia", img: "fotos/pocom8.jpg", desc: "Velocidad y pantalla increíble." },
+        { nombre: "Xiaomi X7 Pro 12/512Gb", cat: "tecnologia", img: "fotos/pocox7pro.jpg", desc: "Potencia bruta para gaming y apps pesadas." },
+        { nombre: "Samsung S25 FE 8/256Gb", cat: "tecnologia", img: "fotos/samsungs25fe.png", desc: "La edición para fanáticos con lo mejor de Samsung." },
+        { nombre: "Ipad 11 A16 128Gb", cat: "tecnologia", img: "fotos/ipad11.jpg", desc: "La tablet de Apple por excelencia, potente y liviana." },
+        { nombre: "Apple Watch Se 3ra Gen 40mm", cat: "tecnologia", img: "fotos/applewatch.png", desc: "Tu compañero ideal para salud y deporte." },
+        { nombre: "Set de vasos de vidrio con borde dorado", cat: "hogar", img: "fotos/Vaso1.jpg", desc: "Elegante set de vasos para jerarquizar tu mesa." },
+        { nombre: "Ducha inteligente", cat: "hogar", img: "fotos/ducha.jpg", desc: "Control de temperatura y ahorro de agua de última generación." },
+        { nombre: "Parlante JBL Flip 7", cat: "tecnologia", img: "fotos/jblflip7.png", desc: "Sonido potente y resistente al agua." },
+        { nombre: "Camara de seguridad foco", cat: "tecnologia", img: "fotos/camarajortan6.jpg", desc: "Vigilancia discreta y fácil instalación." }
+    ];
+
+    function mostrarProductos(lista) {
+        const contenedor = document.getElementById('lista-productos');
+        contenedor.innerHTML = '';
+        lista.forEach(p => {
+            contenedor.innerHTML += `
+                <div class="producto" onclick="abrirModal('${p.nombre}')">
+                    <img src="${p.img}" alt="${p.nombre}">
+                    <h3>${p.nombre}</h3>
+                    <div style="color:#ff8c00; font-weight:bold;">Ver detalles</div>
+                </div>
+            `;
+        });
+    }
+
+    function abrirModal(nombre) {
+        const p = productos.find(prod => prod.nombre === nombre);
+        document.getElementById('imgModal').src = p.img;
+        document.getElementById('tituloModal').innerText = p.nombre;
+        document.getElementById('descModal').innerText = p.desc || "Consultanos para más detalles técnicos de este producto.";
+        document.getElementById('linkWapp').href = `https://wa.me/549XXXXXXXXXX?text=Hola! Me interesa el ${p.nombre}`;
+        document.getElementById('miModal').style.display = "block";
+    }
+
+    function cerrarModal() { document.getElementById('miModal').style.display = "none"; }
+
+    function filtrar(categoria, elemento) {
+        document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('activo'));
+        elemento.classList.add('activo');
+        if(categoria === 'todos') { mostrarProductos(productos); }
+        else { mostrarProductos(productos.filter(p => p.cat === categoria)); }
+    }
+
+    mostrarProductos(productos);
+
+    // Cerrar si hace clic afuera de la ventana
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('miModal')) { cerrarModal(); }
+    }
+</script>
+
+</body>
+</html>
