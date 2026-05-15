@@ -42,7 +42,8 @@
 
     <header>
         <img src="logo.png" alt="Logo" class="logo-img">
-        <h1>Tienda Mandarin</h1>
+        <h1>TIENDA MANDARIN</h1>
+<p class="subtitulo"><strong>Tecnología & Hogar</strong></p>
         <nav class="menu-botones">
             <button onclick="irAInicio()">INICIO</button>
             <button onclick="filtrar('apple')">APPLE</button>
@@ -98,19 +99,27 @@
             { id: 204, nombre: "Enchufe Samsung 15w Original", cat: "samsung", img: "fotos/adaptadorsamsung.jpg", desc: "<ul><li>Carga segura de 15w</li><li>Protección contra sobrecargas</li><li>Producto Original Samsung</li></ul>" },
 
             // XIAOMI
-            { id: 301, nombre: "Xiaomi Note 15 Pro 8/256Gb", cat: "xiaomi", img: "fotos/xiaomi15pro.jpg", desc: "120Hz AMOLED, Cámara 108MP." },
+          { id: 308, nombre: "Xiaomi Note Pro 14 8/256Gb", cat: "xiaomi", img: "fotos/xiaomi14pro.jpg", desc: "Pantalla increíble y carga súper rápida." },
+          { id: 309, nombre: "Xiaomi Note 14 Pro Plus 8/256Gb", cat: "xiaomi", img: "fotos/xiaomi14proplus.jpg", desc: "Cámara de nivel profesional en tus manos." },
+          { id: 310, nombre: "Xiaomi Note 15 8/256Gb", cat: "xiaomi", img: "fotos/xiaominote15.jpg", desc: "Lo último de Xiaomi con diseño elegante." },
+           { id: 301, nombre: "Xiaomi Note 15 Pro 8/256Gb", cat: "xiaomi", img: "fotos/xiaomi15pro.jpg", desc: "120Hz AMOLED, Cámara 108MP." },
             { id: 302, nombre: "Xiaomi Note 15 Pro Plus 8/256Gb", cat: "xiaomi", img: "fotos/xiaomi15proplus.jpg", desc: "Acabado premium, carga ultra rápida." },
             { id: 303, nombre: "Xiaomi M8 8/512Gb", cat: "xiaomi", img: "fotos/pocom8.jpg", desc: "512GB almacenamiento, ideal juegos." },
             { id: 304, nombre: "Xiaomi X7 Pro 12/512Gb", cat: "xiaomi", img: "fotos/pocox7pro.jpg", desc: "12GB RAM, Sonido Hi-Res." },
-            { id: 305, nombre: "Xiaomi F8 Pro Ultra 12/256Gb", cat: "xiaomi", img: "fotos/xiaomi.jpg", desc: "Procesador élite, enfriamiento líquido." },
-            { id: 306, nombre: "Xiaomi Mi Pad", cat: "xiaomi", img: "fotos/xiaomipad.jpg", desc: "Pantalla alta resolución, ideal diseño y juegos." },
-
+            { id: 305, nombre: "Xiaomi F8 Ultra 12/256Gb", cat: "xiaomi", img: "fotos/f8ultra.jpg", desc: "Procesador élite, enfriamiento líquido." },
+            { id: 306, nombre: "Xiaomi Pad 7 8/128Gb", cat: "xiaomi", img: "fotos/xiaomipad.jpg", desc: "Pantalla alta resolución, ideal diseño y juegos." },
+            { id: 307, nombre: "Xiaomi Poco M7 8/256Gb", cat: "xiaomi", img: "fotos/m7.jpg", desc: "Potencia y rendimiento para gamers." },
+ { id: 311, nombre: "Xiaomi A7 Pro 4/128Gb", cat: "xiaomi", img: "fotos/xiaomia7pro.jpg", desc: "Excelente relación calidad-precio." },
+ { id: 312, nombre: "Xiaomi Redmi Pad 2 Pro 6/128Gb", cat: "xiaomi", img: "fotos/redmipad2pro.jpg", desc: "Tablet potente para trabajo y estudio." },
             // HOGAR
             { id: 401, nombre: "Ducha inteligente", cat: "hogar", img: "fotos/ducha.jpg", desc: "Diseño moderno con iluminación LED, display digital de temperatura y timer." },
             { id: 402, nombre: "Copa con borde dorado", cat: "hogar", img: "fotos/copa.jpg", desc: "Cristal premium con filo dorado." },
             { id: 403, nombre: "Vaso de vidrio con borde dorado", cat: "hogar", img: "fotos/Vasovidriobordedorado.jpg", desc: "Vidrio templado con terminación lujo." },
             { id: 404, nombre: "Cámara doble Jortan ", cat: "hogar", img: "fotos/camarajortan6.jpg", desc: "WiFi, Visión nocturna, Audio 2 vías,doble domo" },
-            { id: 405, nombre: "JBL Flip 7 Original", cat: "hogar", img: "fotos/jblflip7.jpg", desc: "Resistente al agua, Sonido Pro JBL." }
+            { id: 405, nombre: "JBL Flip 7 Original", cat: "hogar", img: "fotos/jblflip7.jpg", desc: "Resistente al agua, Sonido Pro JBL." },
+            { id: 406, nombre: "Mochila Maternal Cuna", cat: "hogar", img: "fotos/mochilacuna.jpg", desc: "Práctica y cómoda, se hace cuna para el descanso del bebé." },
+{ id: 407, nombre: "Gatito Sorpresa Peluche", cat: "hogar", img: "fotos/gatitosorpresa.jpg", desc: "Peluche suave con accesorios sorpresa para los más chicos." },
+{ id: 408, nombre: "Cafetera Portátil Expresso", cat: "hogar", img: "fotos/cafeportatil.jpg", desc: "Tu café favorito donde sea que estés, sin necesidad de pilas." }
         ];
 
         const contenedor = document.getElementById('contenedor-principal');
@@ -120,7 +129,7 @@
                 <div class="seccion-texto">
                     <img src="portada.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--orange);">
                     <h2 class="orange">¡Bienvenido/a a Tienda Mandarin!</h2>
-                    <p>Nacimos para ofrecerte la mejor tecnología importada con la atención honesta que te merecés.</p>
+                    <p>Mas de 15 años ofreciendote lo mejor, los años pasan, pero nuestra pasion por la tecnologia sigue intacta.</p>
                     <p><i>Seleccioná una marca arriba para ver nuestro stock.</i></p>
                 </div>`;
         }
@@ -129,7 +138,7 @@
             contenedor.innerHTML = `
                 <div class="seccion-texto">
                     <h2 class="orange">Sobre Nosotros</h2>
-                    <p>Nacimos con una idea muy simple pero que hoy en día cuesta encontrar: ofrecer la mejor tecnología importada y artículos para el hogar, con la atención transparente, honesta y sincera.</p>
+                    <p>Hace mas de 15 años nacimos con una idea muy simple pero que hoy en día cuesta encontrar: ofrecer la mejor tecnología importada y artículos para el hogar, con la atención transparente, honesta y sincera.</p>
                     <p>En Tienda Mandarin no nos interesa venderte por vender. Sabemos que cambiar el celular, elegir una computadora o equipar tu casa es una inversión importante. Por eso, nos tomamos el tiempo de escucharte, asesorarte y recomendarte exactamente lo que necesitás.</p>
                     <p><strong>¿Qué nos define?</strong> Trayectoria, calidad de importación y atención humana.</p>
                     <p>Gracias por seguir eligiéndonos día a día. Además, sinceramente... sin vos, no seríamos lo que somos.</p>
