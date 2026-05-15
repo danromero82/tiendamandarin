@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Mandarin</title>
+    <style>
+        :root { --orange: #f97316; --dark: #1a1a1a; --card: #252525; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--dark); color: #e0e0e0; margin: 0; scroll-behavior: smooth; }
+        header { background-color: #222; padding: 20px; text-align: center; border-bottom: 3px solid var(--orange); position: sticky; top: 0; z-index: 100; }
+        .logo-img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid var(--orange); }
+        h1 { margin: 10px 0; color: var(--orange); text-transform: uppercase; font-size: 1.8rem; }
+        .menu-botones { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
+
+        button, .btn-link {
+            background-color: #2a2a2a; color: white; border: 1px solid var(--orange);
+            padding: 8px 15px; cursor: pointer; border-radius: 8px; font-weight: bold;
+            transition: 0.3s; text-decoration: none; font-size: 0.8rem;
+        }
+        button:hover { background-color: var(--orange); color: #111; }
+
+        #contenedor-principal { padding: 40px 20px; max-width: 1200px; margin: 0 auto; min-height: 400px; }
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+
+        .producto-card { background-color: var(--card); border-radius: 12px; padding: 15px; text-align: center; border: 1px solid #333; }
+        .producto-card img { width: 100%; height: 180px; object-fit: contain; background: white; border-radius: 8px; }
+        .producto-card h3 { color: var(--orange); margin: 12px 0; font-size: 1rem; }
+
+        .btn-detalle { background: #444; border: none; width: 100%; color: white; padding: 8px; border-radius: 5px; cursor: pointer; margin-bottom: 5px; }
+        .btn-whatsapp { background: #25d366; border: none; width: 100%; color: white; padding: 8px; border-radius: 5px; cursor: pointer; text-decoration: none; display: block; }
+
+        .seccion-texto { max-width: 800px; margin: 0 auto; line-height: 1.6; text-align: center; }
+        .orange { color: var(--orange); }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); }
+        .modal-content { background-color: var(--card); margin: 10% auto; padding: 25px; border-radius: 15px; max-width: 450px; border: 1px solid var(--orange); position: relative; }
+        .close { position: absolute; right: 15px; top: 5px; font-size: 24px; cursor: pointer; color: var(--orange); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo" class="logo-img">
+        <h1>Tienda Mandarin</h1>
+        <nav class="menu-botones">
+            <button onclick="irAInicio()">INICIO</button>
+            <button onclick="filtrar('apple')">APPLE</button>
+            <button onclick="filtrar('samsung')">SAMSUNG</button>
+            <button onclick="filtrar('motorola')">MOTOROLA</button>
+            <button onclick="filtrar('xiaomi')">XIAOMI</button>
+            <button onclick="filtrar('hogar')">HOGAR / VARIOS</button>
+            <button onclick="mostrarNosotros()">SOBRE NOSOTROS</button>
+        </nav>
+    </header>
+
+    <main id="contenedor-principal">
+        </main>
+
+    <div id="miModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2 id="modal-titulo" class="orange"></h2>
+            <div id="detalle-info"></div>
+            <button class="btn-detalle" style="margin-top:20px;" onclick="cerrarModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        const productos = [
+            // APPLE
+            { id: 1, nombre: "iPhone 15 128Gb", cat: "apple", img: "fotos/iphone15.jpg", desc: "Pantalla 6.1', Chip A16 Bionic, Cámara 48MP." },
+            { id: 2, nombre: "iPhone 16 128Gb", cat: "apple", img: "fotos/iphone16.jpg", desc: "Chip A18 IA, Botón Acción, Cámara Pro." },
+            { id: 3, nombre: "iPhone 16 Pro 256Gb", cat: "apple", img: "fotos/iphone16pro.jpg", desc: "Titanio Grado 5, Chip A18 Pro." },
+            { id: 4, nombre: "iPhone 16 Pro Max 512Gb", cat: "apple", img: "fotos/iphone16promax.jpg", desc: "Pantalla 6.9', Zoom 5x, Máxima batería." },
+            { id: 5, nombre: "iPhone 17 256Gb", cat: "apple", img: "fotos/iphone17.jpg", desc: "Próximo lanzamiento, mayor eficiencia." },
+            { id: 9, nombre: "iPhone 17 Air 256Gb", cat: "apple", img: "fotos/iphone17air.jpg", desc: "<ul><li>El iPhone más delgado de la historia</li><li>Pantalla ProMotion de 120Hz</li><li>Chip A19 de última generación</li></ul>" },{ id: 10, nombre: "iPhone 17 Pro 256Gb", cat: "apple", img: "fotos/iphone17pro.jpg", desc: "<ul><li>Cámara triple con sensores mejorados</li><li>Cuerpo de Titanio pulido</li><li>Rendimiento profesional para juegos y edición</li></ul>" },
+            { id: 6, nombre: "iPhone 17 Pro Max 256Gb", cat: "apple", img: "fotos/iphone17promax.jpg", desc: "Tope de gama, cámara periscópica avanzada." },
+            { id: 7, nombre: "Apple Watch", cat: "apple", img: "fotos/applewatch.jpg", desc: "Seguimiento salud, GPS, Pantalla Retina." },
+            { id: 8, nombre: "iPad 11", cat: "apple", img: "fotos/ipad11.jpg", desc: "Potencia iPadOS, pantalla Liquid Retina." },
+
+            // MOTOROLA
+            { id: 101, nombre: "Motorola G17 Power 4/256Gb", cat: "motorola", img: "fotos/motorolag17power.png", desc: "Batería 6000mAh, Pantalla 90Hz." },
+            { id: 102, nombre: "Motorola G86 8/256Gb", cat: "motorola", img: "fotos/motog86.jpg", desc: "Cámara 50MP OIS, Snapdragon Elite." },
+            { id: 103, nombre: "Motorola G56 8/256Gb", cat: "motorola", img: "fotos/motog56.jpg", desc: "Diseño Slim, Pantalla OLED. Sin cargador." },
+            { id: 104, nombre: "Motorola G35 8/256Gb", cat: "motorola", img: "fotos/motog35.jpg", desc: "Sonido Dolby Atmos. Sin cargador." },
+            { id: 106, nombre: "Motorola Edge 60 Fusion 8/256Gb", cat: "motorola", img: "fotos/moto60fusion.jpg", desc: "<ul><li>Pantalla pOLED curva con mil millones de colores</li><li>Procesador de alto rendimiento para juegos</li><li>Carga ultra rápida TurboPower</li><li>Cámara con sensor de alta resolución</li></ul>" },
+            { id: 107, nombre: "Motorola G06 Power 4/256Gb", cat: "motorola", img: "fotos/motog06power.jpg", desc: "<ul><li>Gran almacenamiento de 256GB para todas tus fotos</li><li>Pantalla fluida para una mejor experiencia visual</li><li>Batería de larga duración</li><li>Diseño cómodo y moderno</li></ul>" },
+            { id: 105, nombre: "Motorola G15 256Gb", cat: "motorola", img: "fotos/motog15.jpg", desc: "<ul><li>Gran almacenamiento de 256GB</li><li>Pantalla fluida de 90Hz</li><li>Diseño moderno y liviano</li></ul>" },
+
+            // SAMSUNG (Actualizado con las fotos que agregaste)
+            { id: 200, nombre: "Samsung S25 FE", cat: "samsung", img: "fotos/samsungs25fe.jpg", desc: "Edición Fan con procesador optimizado y gran cámara." },
+            { id: 201, nombre: "Samsung S26 Ultra 12/256GB", cat: "samsung", img: "fotos/s26ultra.jpg", desc: "Cámara 200MP, IA de última generación." },
+            { id: 202, nombre: "Samsung A57 8/256Gb", cat: "samsung", img: "fotos/a57.jpg", desc: "Resistente IP67, Gran batería para todo el día." },
+            { id: 203, nombre: "Samsung A37 8/256Gb", cat: "samsung", img: "fotos/a37.jpg", desc: "Pantalla Super AMOLED, fluidez total en apps." },
+            { id: 205, nombre: "Samsung A07 128Gb", cat: "samsung", img: "fotos/a07.jpg", desc: "<ul><li>Pantalla Infinity-V</li><li>Batería de 5000mAh</li><li>Ideal para el uso diario</li></ul>" },
+            { id: 206, nombre: "Samsung A16 128Gb", cat: "samsung", img: "fotos/a16.jpg", desc: "<ul><li>Pantalla AMOLED vibrante</li><li>Cámara de 50MP</li><li>Diseño ultra delgado</li></ul>" },
+            { id: 204, nombre: "Enchufe Samsung 15w Original", cat: "samsung", img: "fotos/adaptadorsamsung.jpg", desc: "<ul><li>Carga segura de 15w</li><li>Protección contra sobrecargas</li><li>Producto Original Samsung</li></ul>" },
+
+            // XIAOMI
+            { id: 301, nombre: "Xiaomi Note 15 Pro 8/256Gb", cat: "xiaomi", img: "fotos/xiaomi15pro.jpg", desc: "120Hz AMOLED, Cámara 108MP." },
+            { id: 302, nombre: "Xiaomi Note 15 Pro Plus 8/256Gb", cat: "xiaomi", img: "fotos/xiaomi15proplus.jpg", desc: "Acabado premium, carga ultra rápida." },
+            { id: 303, nombre: "Xiaomi M8 8/512Gb", cat: "xiaomi", img: "fotos/pocom8.jpg", desc: "512GB almacenamiento, ideal juegos." },
+            { id: 304, nombre: "Xiaomi X7 Pro 12/512Gb", cat: "xiaomi", img: "fotos/pocox7pro.jpg", desc: "12GB RAM, Sonido Hi-Res." },
+            { id: 305, nombre: "Xiaomi F8 Pro Ultra 12/256Gb", cat: "xiaomi", img: "fotos/xiaomi.jpg", desc: "Procesador élite, enfriamiento líquido." },
+            { id: 306, nombre: "Xiaomi Mi Pad", cat: "xiaomi", img: "fotos/xiaomipad.jpg", desc: "Pantalla alta resolución, ideal diseño y juegos." },
+
+            // HOGAR
+            { id: 401, nombre: "Ducha inteligente", cat: "hogar", img: "fotos/ducha.jpg", desc: "Diseño moderno con iluminación LED, display digital de temperatura y timer." },
+            { id: 402, nombre: "Copa con borde dorado", cat: "hogar", img: "fotos/copa.jpg", desc: "Cristal premium con filo dorado." },
+            { id: 403, nombre: "Vaso de vidrio con borde dorado", cat: "hogar", img: "fotos/Vasovidriobordedorado.jpg", desc: "Vidrio templado con terminación lujo." },
+            { id: 404, nombre: "Cámara doble Jortan ", cat: "hogar", img: "fotos/camarajortan6.jpg", desc: "WiFi, Visión nocturna, Audio 2 vías,doble domo" },
+            { id: 405, nombre: "JBL Flip 7 Original", cat: "hogar", img: "fotos/jblflip7.jpg", desc: "Resistente al agua, Sonido Pro JBL." }
+        ];
+
+        const contenedor = document.getElementById('contenedor-principal');
+
+       function irAInicio() {
+            contenedor.innerHTML = `
+                <div class="seccion-texto">
+                    <img src="portada.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--orange);">
+                    <h2 class="orange">¡Bienvenido/a a Tienda Mandarin!</h2>
+                    <p>Nacimos para ofrecerte la mejor tecnología importada con la atención honesta que te merecés.</p>
+                    <p><i>Seleccioná una marca arriba para ver nuestro stock.</i></p>
+                </div>`;
+        }
+
+        function mostrarNosotros() {
+            contenedor.innerHTML = `
+                <div class="seccion-texto">
+                    <h2 class="orange">Sobre Nosotros</h2>
+                    <p>Nacimos con una idea muy simple pero que hoy en día cuesta encontrar: ofrecer la mejor tecnología importada y artículos para el hogar, con la atención transparente, honesta y sincera.</p>
+                    <p>En Tienda Mandarin no nos interesa venderte por vender. Sabemos que cambiar el celular, elegir una computadora o equipar tu casa es una inversión importante. Por eso, nos tomamos el tiempo de escucharte, asesorarte y recomendarte exactamente lo que necesitás.</p>
+                    <p><strong>¿Qué nos define?</strong> Trayectoria, calidad de importación y atención humana.</p>
+                    <p>Gracias por seguir eligiéndonos día a día. Además, sinceramente... sin vos, no seríamos lo que somos.</p>
+                </div>`;
+        }
+
+        function filtrar(categoria) {
+            const filtrados = productos.filter(p => p.cat === categoria);
+            contenedor.innerHTML = '<div class="grid-productos"></div>';
+            const grid = contenedor.querySelector('.grid-productos');
+
+            filtrados.forEach(p => {
+                grid.innerHTML += `
+                    <div class="producto-card">
+                        <img src="${p.img}" alt="${p.nombre}" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
+                        <h3>${p.nombre}</h3>
+                        <button class="btn-detalle" onclick="verDetalles(${p.id})">Ver detalles</button>
+                        <a href="https://wa.me/TUNUMERO" class="btn-whatsapp" target="_blank">Consultar</a>
+                    </div>`;
+            });
+        }
+
+        function verDetalles(id) {
+            const p = productos.find(prod => prod.id === id);
+            document.getElementById('modal-titulo').innerText = p.nombre;
+            document.getElementById('detalle-info').innerHTML = `<p>${p.desc}</p>`;
+            document.getElementById('miModal').style.display = "block";
+        }
+
+        function cerrarModal() { document.getElementById('miModal').style.display = "none"; }
+
+        // Arranca en inicio
+        irAInicio();
+    </script>
+</body>
+</html>
