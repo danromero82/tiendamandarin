@@ -32,6 +32,41 @@
 
         .seccion-texto { max-width: 800px; margin: 0 auto; line-height: 1.6; text-align: center; }
         .orange { color: var(--orange); }
+        /* --- AJUSTES EXCLUSIVOS PARA CELULARES --- */
+@media (max-width: 600px) {
+    header {
+        padding: 5px 10px !important; /* Achica el margen interno del encabezado */
+    }
+
+    header h1 {
+        font-size: 1.3rem !important; /* Hace el título "Tienda Mandarín" más chico */
+        margin: 5px 0 !important;
+    }
+
+    .logo-img {
+        width: 45px !important;  /* Achica el logo para que no ocupe tanto espacio vertical */
+        height: 45px !important;
+    }
+
+    .subtitle, p.subtitulo {
+        font-size: 0.9rem !important;
+        margin: 2px 0 !important;
+    }
+
+    .menu-botones {
+        margin-top: 5px !important;
+        gap: 4px !important; /* Junta un poquito más los botones de categorías */
+    }
+
+    .menu-botones button {
+        padding: 5px 8px !important; /* Hace los botones de categorías más compactos */
+        font-size: 0.75rem !important; /* Achica la letra de los botones para que entren más por fila */
+    }
+
+    #contenedor-principal {
+        padding: 10px 10px !important; /* Sube los productos para que arranquen bien arriba */
+    }
+}
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); }
@@ -180,7 +215,7 @@
 
         grid.innerHTML += `
             <div class="producto-card">
-                <img src="${p.img}" alt="${p.nombre}" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
+                <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
                 <h3>${p.nombre}</h3>
 
                 ${p.precio ? `
@@ -200,7 +235,13 @@
 function verDetalles(id) {
     const prod = productos.find(p => p.id === id);
     document.getElementById('modal-titulo').innerText = prod.nombre;
-    document.getElementById('detalle-info').innerHTML = `<p>${prod.desc}</p>`;
+
+    // Acá metemos la FOTO + la DESCRIPCIÓN para que aparezcan las dos cosas juntas
+    document.getElementById('detalle-info').innerHTML = `
+        <img src="${prod.img}" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;">
+        <p>${prod.desc}</p>
+    `;
+
     document.getElementById('miModal').style.display = 'block';
 }
 
@@ -209,5 +250,27 @@ function verDetalles(id) {
         // Arranca en inicio
         irAInicio();
     </script>
+    <script>
+// Este truco se fija si alguien hace clic en CUALQUIER imagen de un producto
+document.addEventListener('click', function(e) {
+    // Si lo que tocaron es una imagen y está dentro de una tarjeta de producto
+    if (e.target.tagName === 'IMG' && e.target.closest('.producto-card')) {
+        // Buscamos el modal y la parte donde va la foto grande
+        var modal = document.getElementById("miModal");
+        var detalleInfo = document.getElementById("detalle-info");
+
+        // Cambiamos el título del modal por el nombre del producto
+        var tarjeta = e.target.closest('.producto-card');
+        var nombreProducto = tarjeta.querySelector('h3') ? tarjeta.querySelector('h3').innerText : '';
+        document.getElementById("modal-titulo").innerText = nombreProducto;
+
+        // Metemos la foto grande adentro del detalle del modal
+        detalleInfo.innerHTML = '<img src="' + e.target.src + '" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px;">';
+
+        // Abrimos el modal
+        modal.style.display = "block";
+    }
+});
+</script>
 </body>
 </html>
