@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta name="google-site-verification" content="4lBaqly2t-aWtSkYz7dY8C1FIJNlnsNtqBaYRhlo_Pk" />
+    <meta name="google-site-verification" content="4lBaqly2t-aMtSkyz7dV8C1F1JNlmsNtqBaYRhlo_Pk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Mandarin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --orange: #f97316; --dark: #1a1a1a; --card: #252525; }
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--dark); color: #e0e0e0; margin: 0; scroll-behavior: smooth; }
@@ -12,6 +13,12 @@
         .logo-img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid var(--orange); }
         h1 { margin: 10px 0; color: var(--orange); text-transform: uppercase; font-size: 1.8rem; }
         .menu-botones { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
+
+        /* Estilos del contacto: Texto blanco bien visible y logos en naranja */
+        .header-contacto { display: flex; justify-content: center; gap: 25px; margin-top: 15px; font-size: 1.1rem; font-weight: 500; }
+        .header-contacto a { color: #ffffff; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .header-contacto a:hover { color: var(--orange); }
+        .header-contacto i { color: var(--orange); font-size: 1.3rem; }
 
         button, .btn-link {
             background-color: #2a2a2a; color: white; border: 1px solid var(--orange);
@@ -32,41 +39,18 @@
 
         .seccion-texto { max-width: 800px; margin: 0 auto; line-height: 1.6; text-align: center; }
         .orange { color: var(--orange); }
+
         /* --- AJUSTES EXCLUSIVOS PARA CELULARES --- */
-@media (max-width: 600px) {
-    header {
-        padding: 5px 10px !important; /* Achica el margen interno del encabezado */
-    }
-
-    header h1 {
-        font-size: 1.3rem !important; /* Hace el título "Tienda Mandarín" más chico */
-        margin: 5px 0 !important;
-    }
-
-    .logo-img {
-        width: 45px !important;  /* Achica el logo para que no ocupe tanto espacio vertical */
-        height: 45px !important;
-    }
-
-    .subtitle, p.subtitulo {
-        font-size: 0.9rem !important;
-        margin: 2px 0 !important;
-    }
-
-    .menu-botones {
-        margin-top: 5px !important;
-        gap: 4px !important; /* Junta un poquito más los botones de categorías */
-    }
-
-    .menu-botones button {
-        padding: 5px 8px !important; /* Hace los botones de categorías más compactos */
-        font-size: 0.75rem !important; /* Achica la letra de los botones para que entren más por fila */
-    }
-
-    #contenedor-principal {
-        padding: 10px 10px !important; /* Sube los productos para que arranquen bien arriba */
-    }
-}
+        @media (max-width: 600px) {
+            header { padding: 5px 10px !important; }
+            header h1 { font-size: 1.3rem !important; margin: 5px 0 !important; }
+            .logo-img { width: 45px !important; height: 45px !important; }
+            .subtitle, p.subtitulo { font-size: 0.9rem !important; margin: 2px 0 !important; }
+            .header-contacto { gap: 15px !important; font-size: 0.95rem !important; margin-top: 10px !important; }
+            .menu-botones { margin-top: 5px !important; gap: 4px !important; }
+            .menu-botones button { padding: 5px 8px !important; font-size: 0.75rem !important; }
+            #contenedor-principal { padding: 10px 10px !important; }
+        }
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); }
@@ -77,9 +61,19 @@
 <body>
 
     <header>
-        <img src="logo.png" alt="Logo" class="logo-img">
-        <h1>TIENDA MANDARIN</h1>
-<p class="subtitulo"><strong>Tecnología & Hogar</strong></p>
+        <img src="fotos/logo.jpg" alt="Tienda Mandarin Logo" class="logo-img" onerror="this.style.display='none'">
+        <h1><span style="color: #1e90ff;">Tienda</span> Mandarin</h1>
+
+        <div class="header-contacto">
+            <a href="https://wa.me/5491136575450" target="_blank">
+                <i class="fab fa-whatsapp"></i> Tel: 11-3657-5450
+            </a>
+            <a href="https://instagram.com/tiendamandarin.ok" target="_blank">
+                <i class="fab fa-instagram"></i> @tiendamandarin.ok
+            </a>
+        </div>
+
+        <p class="subtitulo"><strong>Tecnología & Hogar</strong></p>
         <nav class="menu-botones">
             <button onclick="irAInicio()">INICIO</button>
             <button onclick="filtrar('apple')">APPLE</button>
@@ -94,7 +88,7 @@
     </header>
 
     <main id="contenedor-principal">
-        </main>
+    </main>
 
     <div id="miModal" class="modal">
         <div class="modal-content">
@@ -107,90 +101,92 @@
 
     <script>
         const productos = [
-    // APPLE
-    { id: 1, nombre: "iPhone 16 128Gb", cat: "apple", img: "fotos/iphone16.jpg", desc: "Pantalla 6.1\", Chip A18, Botón Acción, Cámara Pro.", precio: "1100000" },
-    { id: 2, nombre: "iPhone 16 Pro 256Gb", cat: "apple", img: "fotos/iphone16pro.jpg", desc: "Chip A18 Pro, Botón Acción, Cámara Pro.", precio: "1600000" },
-    { id: 3, nombre: "iPhone 16 Pro Max 512Gb", cat: "apple", img: "fotos/iphone16promax.jpg", desc: "Pantalla 6.9\", Zoom 5x, Máxima batería.", precio: "1855000" },
-    { id: 4, nombre: "iPhone 17 256Gb", cat: "apple", img: "fotos/iphone17.jpg", desc: "Próximo lanzamiento, mayor eficiencia.", precio: "1200000" },
-    { id: 5, nombre: "iPhone 17 \"E\" 256Gb", cat: "apple", img: "fotos/iphone17e.jpg", desc: "Edición especial, gran rendimiento.", precio: "910000" },
-    { id: 6, nombre: "iPhone 17 Air 256Gb", cat: "apple", img: "fotos/iphone17air.jpg", desc: "El iPhone más delgado de la historia.", precio: "1400000" },
-    { id: 7, nombre: "iPhone 17 Pro 256Gb", cat: "apple", img: "fotos/iphone17pro.jpg", desc: "Cuerpo de Titanio pulido, rendimiento profesional.", precio: "1890000" },
-    { id: 8, nombre: "iPhone 17 Pro Max 256Gb", cat: "apple", img: "fotos/iphone17promax.jpg", desc: "Tope de gama, cámara periscópica avanzada.", precio: "2100000" },
-    { id: 9, nombre: "Macbook Neo 13\" 8/256Gb", cat: "apple", img: "fotos/macbookneo.jpg", desc: "Potencia ideal, pantalla Liquid Retina.", precio: "1120000" },
+            // APPLE
+            { id: 1, nombre: "iPhone 16 128Gb", cat: "apple", img: "fotos/iphone16.jpg", desc: "Pantalla 6.1\", Chip A18, Botón Acción, Cámara Pro.", precio: "1100000" },
+            { id: 2, nombre: "iPhone 16 Pro 256Gb", cat: "apple", img: "fotos/iphone16pro.jpg", desc: "Chip A18 Pro, Botón Acción, Cámara Pro.", precio: "1600000" },
+            { id: 3, nombre: "iPhone 16 Pro Max 512Gb", cat: "apple", img: "fotos/iphone16promax.jpg", desc: "Pantalla 6.9\", Zoom 5x, Máxima batería.", precio: "1855000" },
+            { id: 4, nombre: "iPhone 17 256Gb", cat: "apple", img: "fotos/iphone17.jpg", desc: "Próximo lanzamiento, mayor eficiencia.", precio: "1200000" },
+            { id: 5, nombre: "iPhone 17 \"E\" 256Gb", cat: "apple", img: "fotos/iphone17e.jpg", desc: "Edición especial, gran rendimiento.", precio: "910000" },
+            { id: 6, nombre: "iPhone 17 Air 256Gb", cat: "apple", img: "fotos/iphone17air.jpg", desc: "El iPhone más delgado de la historia.", precio: "1400000" },
+            { id: 7, nombre: "iPhone 17 Pro 256Gb", cat: "apple", img: "fotos/iphone17pro.jpg", desc: "Cuerpo de Titanio pulido, rendimiento profesional.", precio: "1890000" },
+            { id: 8, nombre: "iPhone 17 Pro Max 256Gb", cat: "apple", img: "fotos/iphone17promax.jpg", desc: "Tope de gama, cámara periscópica avanzada.", precio: "2100000" },
+            { id: 9, nombre: "Macbook Neo 13\" 8/256Gb", cat: "apple", img: "fotos/macbookneo.jpg", desc: "Potencia ideal, pantalla Liquid Retina.", precio: "1120000" },
 
-    // MOTOROLA
-    { id: 101, nombre: "Motorola G06 4/128Gb", cat: "motorola", img: "fotos/motog06.jpg", desc: "Diseño moderno, pantalla fluida.", precio: "1985000" },
-    { id: 102, nombre: "Motorola G06 Power 4/256Gb", cat: "motorola", img: "fotos/motog06power.jpg", desc: "Gran almacenamiento, súper batería.", precio: "248000" },
-    { id: 103, nombre: "Motorola G15 4/256Gb", cat: "motorola", img: "fotos/motog15.jpg", desc: "Pantalla fluida de 90Hz, diseño ligero.", precio: "275000" },
-    { id: 104, nombre: "Motorola G17 Power 8/256Gb", cat: "motorola", img: "fotos/motorolag17power.png", desc: "Batería 6000mAh, Pantalla 90Hz.", precio: "365000" },
-    { id: 105, nombre: "Motorola G35 8/256Gb", cat: "motorola", img: "fotos/motog35.jpg", desc: "Sonido Dolby Atmos. Sin cargador.", precio: "398500" },
-    { id: 106, nombre: "Motorola G50 Fusion 8/256Gb", cat: "motorola", img: "fotos/50fusion.jpg", desc: "Diseño Slim, Pantalla OLED. Sin cargador.", precio: "380000" },
-    { id: 107, nombre: "Motorola G86 Power 8/512GB", cat: "motorola", img: "fotos/motog86power.jpg", desc: "Cámara 50MP OIS, Snapdragon Elite.", precio: "430000" },
-    { id: 108, nombre: "Motorola Edge 60 Fusion 8/256Gb", cat: "motorola", img: "fotos/moto60fusion.jpg", desc: "Pantalla pOLED curva, procesador potente, carga ultra rápida.", precio: "450000" },
-    { id: 109, nombre: "Motorola G86 8/256Gb", cat: "motorola", img: "fotos/motog86.jpg", desc: "Gran rendimiento, excelente cámara nocturna.", precio: "398000" },
-    { id: 110, nombre: "Motorola G56 8/512Gb", cat: "motorola", img: "fotos/motog56.jpg", desc: "Almacenamiento gigante, diseño elegante y liviano.", precio: "380000" },
+            // MOTOROLA
+            { id: 101, nombre: "Motorola G06 4/128Gb", cat: "motorola", img: "fotos/motog06.jpg", desc: "Diseño moderno, pantalla fluida.", precio: "1985000" },
+            { id: 102, nombre: "Motorola G06 Power 4/256Gb", cat: "motorola", img: "fotos/motog06power.jpg", desc: "Gran almacenamiento, súper batería.", precio: "248000" },
+            { id: 103, nombre: "Motorola G15 4/256Gb", cat: "motorola", img: "fotos/motog15.jpg", desc: "Pantalla fluida de 90Hz, diseño ligero.", precio: "275000" },
+            { id: 104, nombre: "Motorola G17 Power 8/256Gb", cat: "motorola", img: "fotos/motorolag17power.png", desc: "Batería 6000mAh, Pantalla 90Hz.", precio: "365000" },
+            { id: 105, nombre: "Motorola G35 8/256Gb", cat: "motorola", img: "fotos/motog35.jpg", desc: "Sonido Dolby Atmos. Sin cargador.", precio: "398500" },
+            { id: 106, nombre: "Motorola G50 Fusion 8/256Gb", cat: "motorola", img: "fotos/50fusion.jpg", desc: "Diseño Slim, Pantalla OLED. Sin cargador.", precio: "380000" },
+            { id: 107, nombre: "Motorola G86 Power 8/512GB", cat: "motorola", img: "fotos/motog86power.jpg", desc: "Cámara 50MP OIS, Snapdragon Elite.", precio: "430000" },
+            { id: 108, nombre: "Motorola Edge 60 Fusion 8/256Gb", cat: "motorola", img: "fotos/moto60fusion.jpg", desc: "Pantalla pOLED curva, procesador potente, carga ultra rápida.", precio: "450000" },
+            { id: 109, nombre: "Motorola G86 8/256Gb", cat: "motorola", img: "fotos/motog86.jpg", desc: "Gran rendimiento, excelente cámara nocturna.", precio: "398000" },
+            { id: 110, nombre: "Motorola G56 8/512Gb", cat: "motorola", img: "fotos/motog56.jpg", desc: "Almacenamiento gigante, diseño elegante y liviano.", precio: "380000" },
 
-    // SAMSUNG
-    { id: 201, nombre: "Samsung A06 4/128Gb", cat: "samsung", img: "fotos/samsunga06.jpg", desc: "Diseño ultra delgado y liviano.", precio: "220000" },
-    { id: 202, nombre: "Samsung A16 4/128Gb", cat: "samsung", img: "fotos/a16.jpg", desc: "Pantalla AMOLED vibrante, cámara 50MP.", precio: "260000" },
-    { id: 203, nombre: "Samsung A37 8/256Gb", cat: "samsung", img: "fotos/a37.jpg", desc: "Pantalla Super AMOLED, fluidez total.", precio: "598000" },
-    { id: 204, nombre: "Samsung A57 8/256Gb", cat: "samsung", img: "fotos/a57.jpg", desc: "Resistente IP67, Gran batería para todo el día.", precio: "650000" },
-    { id: 205, nombre: "Samsung S25 8/256", cat: "samsung", img: "fotos/samsungs25fe.jpg", desc: "Edición Fan con procesador optimizado.", precio: "1100000" },
-    { id: 206, nombre: "Samsung S26 12/256", cat: "samsung", img: "fotos/s26.jpg", desc: "Alta gama, rendimiento de última generación.", precio: "1160000" },
-    { id: 207, nombre: "Samsung S26 Plus 12/512Gb", cat: "samsung", img: "fotos/s26plus.jpg", desc: "Pantalla más grande, máxima capacidad.", precio: "1640000" },
-    { id: 208, nombre: "Samsung S26 Ultra 12/256Gb", cat: "samsung", img: "fotos/s26ultra.jpg", desc: "Cámara 200MP, IA de última generación.", precio: "1600000" },
-    { id: 209, nombre: "Samsung S26 Ultra 12/512Gb", cat: "samsung", img: "fotos/s26ultra512.jpg", desc: "Cámara 200MP, el más potente de la línea.", precio: "1800000" },
-    { id: 210, nombre: "Enchufe adaptador Samsung 15w Original", cat: "samsung", img: "fotos/adaptadorsamsung.jpg", desc: "Carga segura de 15w, protección contra sobrecargas y producto original.Solo enchufe", precio: "39999" },
+            // SAMSUNG
+            { id: 201, nombre: "Samsung A06 4/128Gb", cat: "samsung", img: "fotos/samsunga06.jpg", desc: "Diseño ultra delgado y liviano.", precio: "220000" },
+            { id: 202, nombre: "Samsung A16 4/128Gb", cat: "samsung", img: "fotos/a16.jpg", desc: "Pantalla AMOLED vibrante, cámara 50MP.", precio: "260000" },
+            { id: 203, nombre: "Samsung A37 8/256Gb", cat: "samsung", img: "fotos/a37.jpg", desc: "Pantalla Super AMOLED, fluidez total.", precio: "598000" },
+            { id: 204, nombre: "Samsung A57 8/256Gb", cat: "samsung", img: "fotos/a57.jpg", desc: "Resistente IP67, Gran batería para todo el día.", precio: "650000" },
+            { id: 205, nombre: "Samsung S25 8/256", cat: "samsung", img: "fotos/samsungs25fe.jpg", desc: "Edición Fan con procesador optimizado.", precio: "1100000" },
+            { id: 206, nombre: "Samsung S26 12/256", cat: "samsung", img: "fotos/s26.jpg", desc: "Alta gama, rendimiento de última generación.", precio: "1160000" },
+            { id: 207, nombre: "Samsung S26 Plus 12/512Gb", cat: "samsung", img: "fotos/s26plus.jpg", desc: "Pantalla más grande, máxima capacidad.", precio: "1640000" },
+            { id: 208, nombre: "Samsung S26 Ultra 12/256Gb", cat: "samsung", img: "fotos/s26ultra.jpg", desc: "Cámara 200MP, IA de última generación.", precio: "1600000" },
+            { id: 209, nombre: "Samsung S26 Ultra 12/512Gb", cat: "samsung", img: "fotos/s26ultra512.jpg", desc: "Cámara 200MP, el más potente de la línea.", precio: "1800000" },
+            { id: 210, nombre: "Enchufe adaptador Samsung 15w Original", cat: "samsung", img: "fotos/adaptadorsamsung.jpg", desc: "Carga segura de 15w, protección contra sobrecargas y producto original. Solo enchufe", precio: "39999" },
 
-    // XIAOMI
-    { id: 316, nombre: "Xiaomi Redmi Pad 2 Pro 6/128Gb", cat: "xiaomi", img: "fotos/redmipad2pro.jpg", desc: "Tablet potente para trabajo y estudio.", precio: "495000" },
-    { id: 315, nombre: "Xiaomi Pad 7 8/128Gb", cat: "xiaomi", img: "fotos/pad7.jpg", desc: "Pantalla alta resolución, ideal diseño y juegos.", precio: "550000" },
-    { id: 301, nombre: "Xiaomi Redmi A7 Pro 4/128Gb", cat: "xiaomi", img: "fotos/xiaomia7pro.jpg", desc: "Excelente relación calidad-precio.", precio: "230000" },
-    { id: 303, nombre: "Xiaomi Redmi 15 8/256Gb", cat: "xiaomi", img: "fotos/redmi15.jpg", desc: "Diseño moderno y cómodo.", precio: "320000" },
-    { id: 308, nombre: "Xiaomi Note 14 Pro 8/256GB", cat: "xiaomi", img: "fotos/xiaominote14pro.jpg", desc: "Pantalla increíble y carga súper rápida.", precio: "450000" },
-    { id: 309, nombre: "Xiaomi Note 14 Pro Plus 8/256GB", cat: "xiaomi", img: "fotos/xiaominote14pro+.jpg", desc: "Cámara de nivel profesional en tus manos.", precio: "520000" },
-    { id: 310, nombre: "Xiaomi Note 14 Pro Plus 12/512GB", cat: "xiaomi", img: "fotos/xiaominote14proplus512.jpg", desc: "Máxima potencia y almacenamiento gigante.", precio: "650000" },
-    { id: 304, nombre: "Xiaomi Note 15 6/128Gb", cat: "xiaomi", img: "fotos/xiaominote15.jpg", desc: "Pantalla fluida con diseño elegante.", precio: "299500" },
-    { id: 305, nombre: "Xiaomi Note 15 8/256Gb", cat: "xiaomi", img: "fotos/xiaominote15.jpg", desc: "Gran almacenamiento, pantalla de 120Hz.", precio: "398500" },
-    { id: 306, nombre: "Xiaomi Note 15 Pro 8/256GB", cat: "xiaomi", img: "fotos/xiaominote15pro.jpg", desc: "Acabado premium, carga ultra rápida.", precio: "420000" },
-    { id: 311, nombre: "Xiaomi Note 15 Pro 8/512Gb", cat: "xiaomi", img: "fotos/xiaominote15pro.jpg", desc: "Pantalla AMOLED and gran rendimiento.", precio: "510000" },
-    { id: 312, nombre: "Xiaomi Note 15 Pro Plus 8/256Gb", cat: "xiaomi", img: "fotos/xiaominote15proplus.jpg", desc: "Lo último de Xiaomi con diseño premium.", precio: "580000" },
-    { id: 313, nombre: "Xiaomi X7 Pro 8/256Gb", cat: "xiaomi", img: "fotos/pocox7pro.jpg", desc: "Sonido Hi-Res, gran rendimiento.", precio: "530000" },
-    { id: 314, nombre: "Xiaomi X7 Pro 12/512Gb", cat: "xiaomi", img: "fotos/x7pro512.jpg", desc: "La versión más potente de la línea X7.", precio: "598500" },
-    { id: 302, nombre: "Xiaomi M7 8/256Gb", cat: "xiaomi", img: "fotos/m7.jpg", desc: "Potencia y rendimiento para gamers.", precio: "298500" },
-    { id: 307, nombre: "Xiaomi M8 8/512Gb", cat: "xiaomi", img: "fotos/pocom8.jpg", desc: "Gran almacenamiento, ideal juegos.", precio: "410000" },
-    { id: 318, nombre: "Xiaomi M8 Pro 12/512Gb", cat: "xiaomi", img: "fotos/m8pro.jpg", desc: "Rendimiento extremo para exigentes.", precio: "550000" },
-    { id: 317, nombre: "Xiaomi F8 Ultra 12/256Gb", cat: "xiaomi", img: "fotos/f8ultra.jpg", desc: "Procesador élite, enfriamiento líquido.", precio: "1100000" },
+            // XIAOMI
+            { id: 316, nombre: "Xiaomi Redmi Pad 2 Pro 6/128Gb", cat: "xiaomi", img: "fotos/redmipad2pro.jpg", desc: "Tablet potente para trabajo y estudio.", precio: "495000" },
+            { id: 315, nombre: "Xiaomi Pad 7 8/128Gb", cat: "xiaomi", img: "fotos/pad7.jpg", desc: "Pantalla alta resolución, ideal diseño y juegos.", precio: "550000" },
+            { id: 301, nombre: "Xiaomi Redmi A7 Pro 4/128Gb", cat: "xiaomi", img: "fotos/xiaomia7pro.jpg", desc: "Excelente relación calidad-precio.", precio: "230000" },
+            { id: 303, nombre: "Xiaomi Redmi 15 8/256Gb", cat: "xiaomi", img: "fotos/redmi15.jpg", desc: "Diseño moderno y cómodo.", precio: "320000" },
+            { id: 308, merge: "Xiaomi Note 14 Pro 8/256GB", cat: "xiaomi", img: "fotos/xiaominote14pro.jpg", desc: "Pantalla increíble y carga súper rápida.", precio: "450000" },
+            { id: 309, nombre: "Xiaomi Note 14 Pro Plus 8/256GB", cat: "xiaomi", img: "fotos/xiaominote14pro+.jpg", desc: "Cámara de nivel profesional en tus manos.", precio: "520000" },
+            { id: 310, nombre: "Xiaomi Note 14 Pro Plus 12/512GB", cat: "xiaomi", img: "fotos/xiaominote14proplus512.jpg", desc: "Máxima potencia y almacenamiento gigante.", precio: "650000" },
+            { id: 304, nombre: "Xiaomi Note 15 6/128Gb", cat: "xiaomi", img: "fotos/xiaominote15.jpg", desc: "Pantalla fluida con diseño elegante.", precio: "299500" },
+            { id: 305, nombre: "Xiaomi Note 15 8/256Gb", cat: "xiaomi", img: "fotos/xiaominote15.jpg", desc: "Gran almacenamiento, pantalla de 120Hz.", precio: "398500" },
+            { id: 306, nombre: "Xiaomi Note 15 Pro 8/256GB", cat: "xiaomi", img: "fotos/xiaominote15pro.jpg", desc: "Acabado premium, carga ultra rápida.", precio: "420000" },
+            { id: 311, nombre: "Xiaomi Note 15 Pro 8/512Gb", cat: "xiaomi", img: "fotos/xiaominote15pro.jpg", desc: "Pantalla AMOLED and gran rendimiento.", precio: "510000" },
+            { id: 312, nombre: "Xiaomi Note 15 Pro Plus 8/256Gb", cat: "xiaomi", img: "fotos/xiaominote15proplus.jpg", desc: "Lo último de Xiaomi con diseño premium.", precio: "580000" },
+            { id: 313, nombre: "Xiaomi X7 Pro 8/256Gb", cat: "xiaomi", img: "fotos/pocox7pro.jpg", desc: "Sonido Hi-Res, gran rendimiento.", precio: "530000" },
+            { id: 314, nombre: "Xiaomi X7 Pro 12/512Gb", cat: "xiaomi", img: "fotos/x7pro512.jpg", desc: "La versión más potente de la línea X7.", precio: "598500" },
+            { id: 302, nombre: "Xiaomi M7 8/256Gb", cat: "xiaomi", img: "fotos/m7.jpg", desc: "Potencia y rendimiento para gamers.", precio: "298500" },
+            { id: 307, nombre: "Xiaomi M8 8/512Gb", cat: "xiaomi", img: "fotos/pocom8.jpg", desc: "Gran almacenamiento, ideal juegos.", precio: "410000" },
+            { id: 318, nombre: "Xiaomi M8 Pro 12/512Gb", cat: "xiaomi", img: "fotos/m8pro.jpg", desc: "Rendimiento extremo para exigentes.", precio: "550000" },
+            { id: 317, nombre: "Xiaomi F8 Ultra 12/256Gb", cat: "xiaomi", img: "fotos/f8ultra.jpg", desc: "Procesador élite, enfriamiento líquido.", precio: "1100000" },
 
-   // HOGAR
-{ id: 401, nombre: "Ducha inteligente C/display", cat: "hogar", img: "fotos/ducha.jpg", desc: "Diseño moderno con iluminación LED, display digital.", precio: "73000" },
-{ id: 402, nombre: "Copa Vidrio grueso borde dorado x6", cat: "hogar", img: "fotos/copa.jpg", desc: "Cristal premium con filo dorado.", precio: "29999" },
-{ id: 403, nombre: "Vaso vidrio grueso con borde dorado x6", cat: "hogar", img: "fotos/vasovidriobordedorado.jpg", desc: "Vidrio templado con terminación lujo.", precio: "24999" },
-{ id: 404, nombre: "Camara Doble domo", cat: "hogar", img: "fotos/camarajortan6.jpg", desc: "WiFi, Visión nocturna, Audio 2 vías.", precio: "85000" },
-{ id: 405, nombre: "JBL Flip 7", cat: "hogar", img: "fotos/jblflip7.jpg", desc: "Resistente al agua, Sonido Pro JBL.", precio: "175000" },
-{ id: 408, nombre: "Cafetera portatil expresso capsulas", cat: "hogar", img: "fotos/cafeportatil.jpg", desc: "Tu café favorito donde sea que estés, sin pilas.", precio: "82000" },
+            // HOGAR
+            { id: 401, nombre: "Ducha inteligente C/display", cat: "hogar", img: "fotos/ducha.jpg", desc: "Diseño moderno con iluminación LED, display digital.", precio: "73000" },
+            { id: 402, nombre: "Copa Vidrio grueso borde dorado x6", cat: "hogar", img: "fotos/copa.jpg", desc: "Cristal premium con filo dorado.", precio: "29999" },
+            { id: 403, nombre: "Vaso vidrio grueso con borde dorado x6", cat: "hogar", img: "fotos/vasovidriobordedorado.jpg", desc: "Vidrio templado con terminación lujo.", precio: "24999" },
+            { id: 404, nombre: "Camara Doble domo", cat: "hogar", img: "fotos/camarajortan6.jpg", desc: "WiFi, Visión nocturna, Audio 2 vías.", precio: "85000" },
+            { id: 405, nombre: "JBL Flip 7", cat: "hogar", img: "fotos/jblflip7.jpg", desc: "Resistente al agua, Sonido Pro JBL.", precio: "175000" },
+            { id: 408, nombre: "Cafetera portatil expresso capsulas", cat: "hogar", img: "fotos/cafeportatil.jpg", desc: "Tu café favorito donde sea que estés, sin pilas.", precio: "82000" },
 
-// ZONA INFANTIL
-{ id: 406, nombre: "Mochila maternal cuna", cat: "infantil", img: "fotos/mochilacuna.jpg", desc: "Práctica y cómoda, se hace cuna para el bebé.", precio: "34999" },
-{ id: 407, nombre: "Gatito Sorpresa Peluche", cat: "infantil", img: "fotos/gatitosorpresa.jpg", desc: "Sacalo de la cola y descubri el gatito sorpresa!.", precio: "29999" },
+            // ZONA INFANTIL
+            { id: 406, nombre: "Mochila maternal cuna", cat: "infantil", img: "fotos/mochilacuna.jpg", desc: "Práctica y cómoda, se hace cuna para el bebé.", precio: "34999" },
+            { id: 407, nombre: "Gatito Sorpresa Peluche", cat: "infantil", img: "fotos/gatitosorpresa.jpg", desc: "Sacalo de la cola y descubri el gatito sorpresa!.", precio: "29999" },
 
-// SALUD Y BELLEZA
-// SALUD Y BELLEZA
-{ id: 501, nombre: "Crema para Psoriasis 250Grs", cat: "salud", img: "fotos/crema.jpg", desc: "Crema exfoliante y reparadora con ingredientes de origen natural sin corticoides para el control de las escamaciones de la piel. Caracteristicas: No mancha, rapida absorcion, resultados notorios.", precio: "36999" },
-{ id: 502, nombre: "Reductor de papada", cat: "salud", img: "fotos/papada.jpg", desc: "Dispositivo inteligente de masaje facial y cuello. Ayuda a definir el contorno del rostro, reducir la flacidez y mejorar la elasticidad de la piel con tecnología de microcorrientes.", precio: "29999" },
-{ id: 503, nombre: "Masajeador de piernas inalambrico", cat: "salud", img: "fotos/masajeadorpiernas.jpg", desc: "Masajeador portátil de compresión que alivia el cansancio, mejora la circulación y relaja los músculos. Ideal para usar después de entrenar o de un día largo.", precio: "49999" },
-{ id: 504, nombre: "Espejo maquillaje Led", cat: "salud", img: "fotos/espejomaq.jpg", desc: "Espejo de alta definición con pantalla táctil, movimiento de 180 grados y paneles laterales con aumentos de 1x, 2x y 3x para lograr el máximo detalle en tu rutina.", precio: "24999" }
-];
+            // SALUD Y BELLEZA
+            { id: 501, nombre: "Crema para Psoriasis 250Grs", cat: "salud", img: "fotos/crema.jpg", desc: "Crema exfoliante y reparadora con ingredientes de origen natural sin corticoides para el control de las descamaciones de la piel. Caracteristicas: No mancha, rapida absorcion, resultados notorios.", precio: "36999" },
+            { id: 502, nombre: "Reductor de papada", cat: "salud", img: "fotos/papada.jpg", desc: "Dispositivo inteligente de masaje facial y cuello. Ayuda a definir el contorno del rostro, reducir la flacidez y mejorar la elasticidad de la piel con tecnología de microcorrientes.", precio: "29999" },
+            { id: 503, nombre: "Masajeador de piernas inalambrico", cat: "salud", img: "fotos/masajeadorpiernas.jpg", desc: "Masajeador portátil de compresión que alivia el cansancio, mejora la circulación y relaja los músculos. Ideal para usar después de entrenar o de un día largo.", precio: "49999" },
+            { id: 504, nombre: "Espejo maquillaje Led", cat: "salud", img: "fotos/espejomaq.jpg", desc: "Espejo de alta definición con pantalla táctil, movimiento de 180 grados y paneles laterales con aumentos de 1x, 2x y 3x para lograr el máximo detalle en tu rutina.", precio: "24999" }
+        ];
+
         const contenedor = document.getElementById('contenedor-principal');
 
-       function irAInicio() {
+        /* Renombramos la función a irAInicio para que coincida exactamente con el botón */
+        function irAInicio() {
             contenedor.innerHTML = `
                 <div class="seccion-texto">
-                    <img src="portada1.1.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--orange);">
+                    <img src="fotos/portada1.1.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--orange);">
                     <h2 class="orange">¡Bienvenido/a a Tienda Mandarin!</h2>
-                    <p>Mas de 15 años ofreciendote lo mejor, los años pasan, pero nuestra pasion por la tecnologia sigue intacta.</p>
+                    <p>Más de 15 años ofreciéndote lo mejor, los años pasan, pero nuestra pasión por la tecnología sigue intacta.</p>
                     <p><i>Seleccioná una marca arriba para ver nuestro stock.</i></p>
-                </div>`;
+                </div>
+            `;
         }
 
         function mostrarNosotros() {
@@ -201,76 +197,56 @@
                     <p>En Tienda Mandarin no nos interesa venderte por vender. Sabemos que cambiar el celular, elegir una computadora o equipar tu casa es una inversión importante. Por eso, nos tomamos el tiempo de escucharte, asesorarte y recomendarte exactamente lo que necesitás.</p>
                     <p><strong>¿Qué nos define?</strong> Trayectoria, calidad de importación y atención humana.</p>
                     <p>Gracias por seguir eligiéndonos día a día. Además, sinceramente... sin vos, no seríamos lo que somos.</p>
-                </div>`;
+                </div>
+            `;
         }
 
-      function filtrar(categoria) {
-    const filtrados = productos.filter(p => p.cat === categoria);
-    contenedor.innerHTML = '<div class="grid-productos"></div>';
-    const grid = contenedor.querySelector('.grid-productos');
+        function filtrar(categoria) {
+            const filtrados = productos.filter(p => p.cat === categoria);
+            contenedor.innerHTML = '<div class="grid-productos"></div>';
+            const grid = contenedor.querySelector('.grid-productos');
 
-    filtrados.forEach(p => {
-        // Esto arma el mensaje automático con el nombre exacto de cada producto
-        const mensajeWa = encodeURIComponent(`Hola! Vengo de la pagina y me interesa el producto: ${p.nombre}`);
-
-        grid.innerHTML += `
-            <div class="producto-card">
-                <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
-                <h3>${p.nombre}</h3>
-
-                ${p.precio ? `
-                    <div class="precio-contenedor" style="margin: 8px 0; font-family: sans-serif;">
-                        <span style="font-size: 20px; font-weight: bold; color: #2ecc71;">$${Number(p.precio).toLocaleString('es-AR')}</span>
-                        <p style="margin: 2px 0 0 0; font-size: 11px; color: #a0a0a0;">Efectivo / Transferencia</p>
+            filtrados.forEach(p => {
+                const mensajeWa = encodeURIComponent(`Hola! Vengo de la pagina y me interesa el producto: ${p.nombre}`);
+                grid.innerHTML += `
+                    <div class="producto-card">
+                        <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
+                        <h3>${p.nombre}</h3>
+                        ${p.precio ? `
+                            <div class="precio-contenedor" style="margin: 8px 0; font-family: sans-serif;">
+                                <span style="font-size: 20px; font-weight: bold; color: #2ecc71;">$${Number(p.precio).toLocaleString('es-AR')}</span>
+                                <p style="margin: 2px 0 0 0; font-size: 11px; color: #a0a0a0;">Efectivo / Transferencia</p>
+                            </div>
+                        ` : ''}
+                        <button class="btn-detalle" style="margin-top: 5px;" onclick="verDetalles(${p.id})">Ver detalles</button>
+                        <a href="https://wa.me/5491136575450?text=${mensajeWa}" class="btn-whatsapp" target="_blank">Consultar</a>
                     </div>
-                ` : ''}
+                `;
+            });
+        }
 
-                <button class="btn-detalle" style="margin-top: 5px;" onclick="verDetalles(${p.id})">Ver detalles</button>
-                <a href="https://wa.me/5491136575450?text=${mensajeWa}" class="btn-whatsapp" target="_blank">Consultar</a>
-            </div>
-        `;
-    });
-}
-
-function verDetalles(id) {
-    const prod = productos.find(p => p.id === id);
-    document.getElementById('modal-titulo').innerText = prod.nombre;
-
-    // Acá metemos la FOTO + la DESCRIPCIÓN para que aparezcan las dos cosas juntas
-    document.getElementById('detalle-info').innerHTML = `
-        <img src="${prod.img}" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;">
-        <p>${prod.desc}</p>
-    `;
-
-    document.getElementById('miModal').style.display = 'block';
-}
+        function verDetalles(id) {
+            const prod = productos.find(p => p.id === id);
+            document.getElementById('modal-titulo').innerText = prod.nombre;
+            document.getElementById('detalle-info').innerHTML = `
+                <img src="${prod.img}" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;">
+                <p>${prod.desc}</p>
+            `;
+            document.getElementById('miModal').style.display = 'block';
+        }
 
         function cerrarModal() { document.getElementById('miModal').style.display = "none"; }
 
-        // Arranca en inicio
+        // Arranca en inicio automáticamente
         irAInicio();
     </script>
     <script>
-// Este truco se fija si alguien hace clic en CUALQUIER imagen de un producto
-document.addEventListener('click', function(e) {
-    // Si lo que tocaron es una imagen y está dentro de una tarjeta de producto
-    if (e.target.tagName === 'IMG' && e.target.closest('.producto-card')) {
-        // Buscamos el modal y la parte donde va la foto grande
-        var modal = document.getElementById("miModal");
-        var detalleInfo = document.getElementById("detalle-info");
-
-        // Cambiamos el título del modal por el nombre del producto
-        var tarjeta = e.target.closest('.producto-card');
-        var nombreProducto = tarjeta.querySelector('h3') ? tarjeta.querySelector('h3').innerText : '';
-        document.getElementById("modal-titulo").innerText = nombreProducto;
-
-        // Metemos la foto grande adentro del detalle del modal
-        detalleInfo.innerHTML = '<img src="' + e.target.src + '" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px;">';
-
-        // Abrimos el modal
-        modal.style.display = "block";
-    }
-});
-</script>
-</body>
-</html>
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG' && e.target.closest('.producto-card')) {
+                var modal = document.getElementById("miModal");
+                var detalleInfo = document.getElementById("detalle-info");
+                var tarjeta = e.target.closest('.producto-card');
+                var nombreProducto = tarjeta.querySelector('h3') ? tarjeta.querySelector('h3').innerText : '';
+                document.getElementById("modal-titulo").innerText = nombreProducto;
+                detalleInfo.innerHTML = '<img src="' + e.target.src + '" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px;">';
+                modal.style.display = "
