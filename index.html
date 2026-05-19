@@ -116,7 +116,7 @@
             { id: 9, nombre: "Macbook Neo 13\" 8/256Gb", cat: "apple", img: "fotos/macbookneo.jpg", desc: "Potencia ideal, pantalla Liquid Retina.", precio: "1120000" },
 
             // MOTOROLA
-            { id: 101, nombre: "Motorola G06 4/128Gb", cat: "motorola", img: "fotos/motog06.jpg", desc: "Diseño moderno, pantalla fluida.", precio: "1985000" },
+            { id: 101, nombre: "Motorola G06 4/128Gb", cat: "motorola", img: "fotos/motog06.jpg", desc: "Diseño moderno, pantalla fluida.", precio: "198500" },
             { id: 102, nombre: "Motorola G06 Power 4/256Gb", cat: "motorola", img: "fotos/motog06power.jpg", desc: "Gran almacenamiento, súper batería.", precio: "248000" },
             { id: 103, nombre: "Motorola G15 4/256Gb", cat: "motorola", img: "fotos/motog15.jpg", desc: "Pantalla fluida de 90Hz, diseño ligero.", precio: "275000" },
             { id: 104, nombre: "Motorola G17 Power 8/256Gb", cat: "motorola", img: "fotos/motorolag17power.png", desc: "Batería 6000mAh, Pantalla 90Hz.", precio: "365000" },
@@ -211,7 +211,7 @@
 
             filtrados.forEach(p => {
                 const mensajeWa = encodeURIComponent(`Hola! Vengo de la pagina y me interesa el producto: ${p.nombre}`);
-                const precioAjustado = p.precio ? Math.round((p.precio * ajustePrecios) / 1000) * 1000 : null;
+                const precioAjustado = p.precio ? Math.round((p.precio * ajustePrecios) / 10000) * 10000 : null;
 
                 grid.innerHTML += `
                     <div class="producto-card">
