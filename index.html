@@ -204,21 +204,22 @@
             `;
         }
 
-        function filtrar(categoria) {
+       function filtrar(categoria) {
             const filtrados = productos.filter(p => p.cat === categoria);
             contenedor.innerHTML = '<div class="grid-productos"></div>';
             const grid = contenedor.querySelector('.grid-productos');
 
             filtrados.forEach(p => {
                 const mensajeWa = encodeURIComponent(`Hola! Vengo de la pagina y me interesa el producto: ${p.nombre}`);
+                const precioAjustado = p.precio ? Math.round(p.precio * ajustePrecios) : null;
+
                 grid.innerHTML += `
                     <div class="producto-card">
                         <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
                         <h3>${p.nombre}</h3>
-                        const precioAjustado = p.precio ? Math.round(p.precio * ajustePrecios) : null;
                         ${p.precio ? `
                             <div class="precio-contenedor" style="margin: 8px 0; font-family: sans-serif;">
-                               <span style="font-size: 20px; font-weight: bold; color: #2ecc71;">$${Number(precioAjustado).toLocaleString('es-AR')}</span>
+                                <span style="font-size: 20px; font-weight: bold; color: #2ecc71;">$${Number(precioAjustado).toLocaleString('es-AR')}</span>
                                 <p style="margin: 2px 0 0 0; font-size: 11px; color: #a0a0a0;">Efectivo / Transferencia</p>
                             </div>
                         ` : ''}
