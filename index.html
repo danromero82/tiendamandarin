@@ -211,7 +211,7 @@
 
             filtrados.forEach(p => {
                 const mensajeWa = encodeURIComponent(`Hola! Vengo de la pagina y me interesa el producto: ${p.nombre}`);
-                const precioAjustado = p.precio ? Math.round(p.precio * ajustePrecios) : null;
+                const precioAjustado = p.precio ? Math.round((p.precio * ajustePrecios) / 1000) * 1000 : null;
 
                 grid.innerHTML += `
                     <div class="producto-card">
