@@ -100,6 +100,9 @@
     </div>
 
     <script>
+    const dolarBase = 1405;
+        const dolarHoy = 1440;
+        const ajustePrecios = dolarHoy / dolarBase;
         const productos = [
             // APPLE
             { id: 1, nombre: "iPhone 16 128Gb", cat: "apple", img: "fotos/iphone16.jpg", desc: "Pantalla 6.1\", Chip A18, Botón Acción, Cámara Pro.", precio: "1100000" },
@@ -212,9 +215,10 @@
                     <div class="producto-card">
                         <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
                         <h3>${p.nombre}</h3>
+                        const precioAjustado = p.precio ? Math.round(p.precio * ajustePrecios) : null;
                         ${p.precio ? `
                             <div class="precio-contenedor" style="margin: 8px 0; font-family: sans-serif;">
-                                <span style="font-size: 20px; font-weight: bold; color: #2ecc71;">$${Number(p.precio).toLocaleString('es-AR')}</span>
+                                <span style="font-size: 20px; font-weight: bold; color: #2ecc71;">$${Number(precioAjustado).toLocaleString('es-AR')}</span>
                                 <p style="margin: 2px 0 0 0; font-size: 11px; color: #a0a0a0;">Efectivo / Transferencia</p>
                             </div>
                         ` : ''}
