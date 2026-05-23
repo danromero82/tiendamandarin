@@ -1,0 +1,1 @@
+cd ~/Escritorio/Pagina && git add index.html && git commit -m "Sistema de dolarizacion automatica" && git push origin master
