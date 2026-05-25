@@ -7,55 +7,126 @@
     <title>Tienda Mandarin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --orange: #f97316; --dark: #1a1a1a; --card: #252525; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--dark); color: #e0e0e0; margin: 0; scroll-behavior: smooth; }
-        header { background-color: #222; padding: 20px; text-align: center; border-bottom: 3px solid var(--orange); position: sticky; top: 0; z-index: 100; }
+        :root {
+            --orange: #ff6b35; /* Naranja Mandarín */
+            --bg-light: #f4f6f9; /* Fondo claro premium */
+            --text-dark: #2c3e50; /* Texto oscuro elegante */
+            --card-white: #ffffff; /* Tarjetas blancas */
+            --border-color: #e6ebf1;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: var(--card-white);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--orange);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
         .logo-img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid var(--orange); }
-        h1 { margin: 10px 0; color: var(--orange); text-transform: uppercase; font-size: 1.8rem; }
+
+        h1 { margin: 10px 0; color: var(--orange); text-transform: uppercase; font-size: 1.8rem; font-weight: 700; }
+
         .menu-botones { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
 
-        /* Estilos del contacto: Texto blanco bien visible y logos en naranja */
-        .header-contacto { display: flex; justify-content: center; gap: 25px; margin-top: 15px; font-size: 1.1rem; font-weight: 500; }
-        .header-contacto a { color: #ffffff; text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .header-contacto { display: flex; justify-content: center; gap: 25px; margin-top: 15px; font-size: 1.1rem; font-weight: 600; }
+        .header-contacto a { color: var(--text-dark); text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 8px; }
         .header-contacto a:hover { color: var(--orange); }
         .header-contacto i { color: var(--orange); font-size: 1.3rem; }
 
+        /* Botones superiores: Blancos con borde naranja fino */
         button, .btn-link {
-            background-color: #2a2a2a; color: white; border: 1px solid var(--orange);
-            padding: 8px 15px; cursor: pointer; border-radius: 8px; font-weight: bold;
-            transition: 0.3s; text-decoration: none; font-size: 0.8rem;
+            background-color: var(--card-white);
+            color: var(--text-dark);
+            border: 1px solid var(--orange);
+            padding: 9px 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
+            text-decoration: none;
         }
-        button:hover { background-color: var(--orange); color: #111; }
+
+        /* Efecto al pasar el mouse por arriba */
+        button:hover {
+            background-color: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        }
 
         #contenedor-principal { padding: 40px 20px; max-width: 1200px; margin: 0 auto; min-height: 400px; }
-        .grid-productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
 
-        .producto-card { background-color: var(--card); border-radius: 12px; padding: 15px; text-align: center; border: 1px solid #333; }
-        .producto-card img { width: 100%; height: 180px; object-fit: contain; background: white; border-radius: 8px; }
-        .producto-card h3 { color: var(--orange); margin: 12px 0; font-size: 1rem; }
-
-        .btn-detalle { background: #444; border: none; width: 100%; color: white; padding: 8px; border-radius: 5px; cursor: pointer; margin-bottom: 5px; }
-        .btn-whatsapp { background: #25d366; border: none; width: 100%; color: white; padding: 8px; border-radius: 5px; cursor: pointer; text-decoration: none; display: block; }
-
-        .seccion-texto { max-width: 800px; margin: 0 auto; line-height: 1.6; text-align: center; }
-        .orange { color: var(--orange); }
-
-        /* --- AJUSTES EXCLUSIVOS PARA CELULARES --- */
-        @media (max-width: 600px) {
-            header { padding: 5px 10px !important; }
-            header h1 { font-size: 1.3rem !important; margin: 5px 0 !important; }
-            .logo-img { width: 45px !important; height: 45px !important; }
-            .subtitle, p.subtitulo { font-size: 0.9rem !important; margin: 2px 0 !important; }
-            .header-contacto { gap: 15px !important; font-size: 0.95rem !important; margin-top: 10px !important; }
-            .menu-botones { margin-top: 5px !important; gap: 4px !important; }
-            .menu-botones button { padding: 5px 8px !important; font-size: 0.75rem !important; }
-            #contenedor-principal { padding: 10px 10px !important; }
+        /* Grilla en horizontal para los productos */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
         }
 
-        /* MODAL */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); }
-        .modal-content { background-color: var(--card); margin: 10% auto; padding: 25px; border-radius: 15px; max-width: 450px; border: 1px solid var(--orange); position: relative; }
-        .close { position: absolute; right: 15px; top: 5px; font-size: 24px; cursor: pointer; color: var(--orange); }
+        /* Tarjetas flotantes premium */
+        .producto-card {
+            background-color: var(--card-white);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .producto-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--orange);
+        }
+        .producto-card img { width: 100%; height: 180px; object-fit: contain; background: white; border-radius: 12px; }
+        .producto-card h3 { color: var(--text-dark); margin: 12px 0; font-size: 1.05rem; font-weight: 600; }
+
+        .btn-detalle { background: #eef2f5; border: none; width: 100%; color: var(--text-dark); padding: 9px; border-radius: 8px; cursor: pointer; margin-bottom: 8px; font-weight: 600; transition: background 0.2s; }
+        .btn-detalle:hover { background: #e2e8f0; }
+
+        .btn-whatsapp { background: #25d366; border: none; width: 100%; color: white; padding: 9px; border-radius: 8px; cursor: pointer; text-decoration: none; display: block; font-weight: bold; text-align: center; transition: background 0.2s; }
+        .btn-whatsapp:hover { background: #20ba56; }
+
+        .seccion-texto { max-width: 800px; margin: 0 auto; line-height: 1.6; text-align: center; color: var(--text-dark); }
+        .orange { color: var(--orange); }
+
+        /* Ajustes para celulares */
+        @media (max-width: 600px) {
+            header { padding: 10px !important; }
+            header h1 { font-size: 1.4rem !important; margin: 5px 0 !important; }
+            .logo-img { width: 50px !important; height: 50px !important; }
+            .subtitle, p.subtitulo { font-size: 0.9rem !important; margin: 2px 0 !important; color: #7f8c8d; }
+            .header-contacto { gap: 15px !important; font-size: 0.95rem !important; margin-top: 10px !important; }
+            .menu-botones { margin-top: 8px !important; gap: 4px !important; }
+            .menu-botones button { padding: 6px 10px !important; font-size: 0.75rem !important; }
+            #contenedor-principal { padding: 15px 10px !important; }
+            .grid-productos { gap: 15px; }
+        }
+
+        /* Modal Claro */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: var(--card-white); margin: 12% auto; padding: 25px; border-radius: 16px; max-width: 450px; border: none; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.15); color: var(--text-dark); }
+        .close { position: absolute; right: 15px; top: 8px; font-size: 28px; cursor: pointer; color: #a0a0a0; transition: color 0.2s; }
+        .close:hover { color: var(--orange); }
     </style>
 </head>
 <body>
@@ -93,9 +164,9 @@
     <div id="miModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
-            <h2 id="modal-titulo" class="orange"></h2>
+            <h2 id="modal-titulo" class="orange" style="margin-bottom:15px; font-size:1.3rem;"></h2>
             <div id="detalle-info"></div>
-            <button class="btn-detalle" style="margin-top:20px;" onclick="cerrarModal()">Cerrar</button>
+            <button class="btn-detalle" style="margin-top:20px; background: var(--orange); color: white;" onclick="cerrarModal()">Cerrar</button>
         </div>
     </div>
 
@@ -122,10 +193,10 @@
             { id: 107, nombre: "Motorola G86 Power 8/512GB", cat: "motorola", img: "fotos/motog86power.jpg", desc: "Cámara 50MP OIS, Snapdragon Elite.", precio: "430000" },
             { id: 108, nombre: "Motorola Edge 60 Fusion 8/256Gb", cat: "motorola", img: "fotos/moto60fusion.jpg", desc: "Pantalla pOLED curva, procesador potente, carga ultra rápida.", precio: "450000" },
             { id: 109, nombre: "Motorola G86 8/256Gb", cat: "motorola", img: "fotos/motog86.jpg", desc: "Gran rendimiento, excelente cámara nocturna.", precio: "398000" },
-            { id: 110, nombre: "Motorola G56 8/512Gb", cat: "motorola", img: "fotos/motog56.jpg", desc: "Almacenamiento gigante, diseño elegante y liviano.", precio: "380000" },
+            { id: 110, nombre: "Motorola G56 8/512Gb", cat: "motorola", img: "fotos/motog56.jpg", desc: "Almacenamiento gigante, diseño elegante and liviano.", precio: "380000" },
 
             // SAMSUNG
-            { id: 201, nombre: "Samsung A06 4/128Gb", cat: "samsung", img: "fotos/samsunga06.jpg", desc: "Diseño ultra delgado y liviano.", precio: "220000" },
+            { id: 201, nombre: "Samsung A06 4/128Gb", cat: "samsung", img: "fotos/samsunga06.jpg", desc: "Diseño ultra delgado and liviano.", precio: "220000" },
             { id: 202, nombre: "Samsung A16 4/128Gb", cat: "samsung", img: "fotos/a16.jpg", desc: "Pantalla AMOLED vibrante, cámara 50MP.", precio: "260000" },
             { id: 203, nombre: "Samsung A37 8/256Gb", cat: "samsung", img: "fotos/a37.jpg", desc: "Pantalla Super AMOLED, fluidez total.", precio: "598000" },
             { id: 204, font_name: "Samsung A57 8/256Gb", nombre: "Samsung A57 8/256Gb", cat: "samsung", img: "fotos/a57.jpg", desc: "Resistente IP67, Gran batería para todo el día.", precio: "650000" },
@@ -185,22 +256,22 @@
         function irAInicio() {
             contenedor.innerHTML = `
                 <div class="seccion-texto">
-                    <img src="fotos/portadafinal.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--orange);">
+                    <img src="fotos/portadafinal.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
                     <h2 class="orange">¡Bienvenido/a a Tienda Mandarin!</h2>
-                    <p>Más de 15 años ofreciéndote lo mejor, los años pasan, pero nuestra pasión por la tecnología sigue intacta.</p>
-                    <p><i>Seleccioná una marca arriba para ver nuestro stock.</i></p>
+                    <p style="margin-top: 10px; font-size: 1.1rem;">Más de 15 años ofreciéndote lo mejor. Los años pasan, pero nuestra pasión por la tecnología y el hogar sigue intacta.</p>
+                    <p style="color: #7f8c8d; margin-top: 5px;"><i>Seleccioná una categoría arriba para ver nuestro stock.</i></p>
                 </div>
             `;
         }
 
         function mostrarNosotros() {
             contenedor.innerHTML = `
-                <div class="seccion-texto">
-                    <h2 class="orange">Sobre Nosotros</h2>
-                    <p>Hace mas de 15 años nacimos con una idea muy simple pero que hoy en día cuesta encontrar: ofrecer la mejor tecnología importada y artículos para el hogar, con la atención transparente, honesta y sincera.</p>
-                    <p>En Tienda Mandarin no nos interesa venderte por vender. Sabemos que cambiar el celular, elegir una computadora o equipar tu casa es una inversión importante. Por eso, nos tomamos el tiempo de escucharte, asesorarte y recomendarte exactamente lo que necesitás.</p>
-                    <p><strong>¿Qué nos define?</strong> Trayectoria, calidad de importación y atención humana.</p>
-                    <p>Gracias por seguir eligiéndonos día a día. Además, sinceramente... sin vos, no seríamos lo que somos.</p>
+                <div class="seccion-texto" style="text-align: left; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid var(--border-color);">
+                    <h2 class="orange" style="text-align: center; margin-bottom: 20px;">Sobre Nosotros</h2>
+                    <p style="margin-bottom: 15px;">Hace más de 15 años nacimos con una idea muy simple pero que hoy en día cuesta encontrar: ofrecer la mejor tecnología importada y artículos para el hogar, con una atención transparente, honesta y sincera.</p>
+                    <p style="margin-bottom: 15px;">En Tienda Mandarin no nos interesa venderte por vender. Sabemos que cambiar el celular, elegir una herramienta para el día a día o equipar tu casa es una inversión importante. Por eso, nos tomamos el tiempo de escucharte, asesorarte y recomendarte exactamente lo que necesitás.</p>
+                    <p style="margin-bottom: 15px;"><strong>¿Qué nos define?</strong> Trayectoria, calidad de importación y atención humana.</p>
+                    <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #7f8c8d;">Gracias por seguir eligiéndonos día a día. Sinceramente... sin vos, no seríamos lo que somos.</p>
                 </div>
             `;
         }
@@ -210,22 +281,31 @@
             contenedor.innerHTML = '<div class="grid-productos"></div>';
             const grid = contenedor.querySelector('.grid-productos');
 
+            if (filtrados.length === 0) {
+                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: #7f8c8d;">No hay productos disponibles en esta categoría por el momento.</p>`;
+                return;
+            }
+
             filtrados.forEach(p => {
                 const mensajeWa = encodeURIComponent(`Hola! Vengo de la pagina y me interesa el producto: ${p.nombre}`);
                 const precioAjustado = p.precio ? Number(p.precio) : null;
 
                 grid.innerHTML += `
                     <div class="producto-card">
-                        <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
-                        <h3>${p.nombre}</h3>
-                        ${p.precio ? `
-                            <div class="precio-contenedor" style="margin: 8px 0; font-family: sans-serif;">
-                                <span style="font-size: 20px; font-weight: bold; color: #2ecc71;">$${precioAjustado.toLocaleString('es-AR')}</span>
-                                <p style="margin: 2px 0 0 0; font-size: 11px; color: #a0a0a0;">Efectivo / Transferencia</p>
-                            </div>
-                        ` : ''}
-                        <button class="btn-detalle" style="margin-top: 5px;" onclick="verDetalles(${p.id})">Ver detalles</button>
-                        <a href="https://wa.me/5491136575450?text=${mensajeWa}" class="btn-whatsapp" target="_blank">Consultar</a>
+                        <div>
+                            <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
+                            <h3>${p.nombre}</h3>
+                        </div>
+                        <div>
+                            ${p.precio ? `
+                                <div class="precio-contenedor" style="margin: 12px 0; font-family: sans-serif;">
+                                    <span style="font-size: 22px; font-weight: bold; color: #2ecc71;">$${precioAjustado.toLocaleString('es-AR')}</span>
+                                    <p style="margin: 2px 0 8px 0; font-size: 11px; color: #7f8c8d; font-weight: 600;">Efectivo / Transferencia</p>
+                                </div>
+                            ` : ''}
+                            <button class="btn-detalle" onclick="verDetalles(${p.id})">Ver detalles</button>
+                            <a href="https://wa.me/5491136575450?text=${mensajeWa}" class="btn-whatsapp" target="_blank">Consultar</a>
+                        </div>
                     </div>
                 `;
             });
@@ -235,8 +315,8 @@
             const prod = productos.find(p => p.id === id);
             document.getElementById('modal-titulo').innerText = prod.nombre;
             document.getElementById('detalle-info').innerHTML = `
-                <img src="${prod.img}" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;">
-                <p>${prod.desc}</p>
+                <img src="${prod.img}" style="max-width:100%; height:180px; object-fit: contain; border-radius:12px; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto; background: #fff;">
+                <p style="font-size: 1rem; color: #555; line-height: 1.5; text-align: center;">${prod.desc}</p>
             `;
             document.getElementById('miModal').style.display = 'block';
         }
@@ -253,11 +333,19 @@
                 var detalleInfo = document.getElementById("detalle-info");
                 var tarjeta = e.target.closest('.producto-card');
                 var nombreProducto = tarjeta.querySelector('h3') ? tarjeta.querySelector('h3').innerText : '';
+
+                const prodId = tarjeta.querySelector('img').getAttribute('onclick').match(/\d+/)[0];
+                const prod = productos.find(p => p.id == prodId);
+
                 document.getElementById("modal-titulo").innerText = nombreProducto;
-                detalleInfo.innerHTML = '<img src="' + e.target.src + '" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:15px;">';
+                detalleInfo.innerHTML = `
+                    <img src="${e.target.src}" style="max-width:100%; height:180px; object-fit: contain; border-radius:12px; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto; background: #fff;">
+                    <p style="font-size: 1rem; color: #555; line-height: 1.5; text-align: center;">${prod.desc}</p>
+                `;
                 modal.style.display = "block";
             }
         });
     </script>
 </body>
 </html>
+
