@@ -254,6 +254,7 @@
         const contenedor = document.getElementById('contenedor-principal');
 
         function irAInicio() {
+            window.scrollTo(0, 0);
             contenedor.innerHTML = `
                 <div class="seccion-texto">
                     <img src="fotos/portadafinal.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
@@ -265,6 +266,7 @@
         }
 
         function mostrarNosotros() {
+            window.scrollTo(0, 0);
             contenedor.innerHTML = `
                 <div class="seccion-texto" style="text-align: left; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid var(--border-color);">
                     <h2 class="orange" style="text-align: center; margin-bottom: 20px;">Sobre Nosotros</h2>
@@ -277,6 +279,7 @@
         }
 
         function filtrar(categoria) {
+            window.scrollTo(0, 0);
             const filtrados = productos.filter(p => p.cat === categoria);
             contenedor.innerHTML = '<div class="grid-productos"></div>';
             const grid = contenedor.querySelector('.grid-productos');
@@ -326,26 +329,5 @@
         // Arranca en inicio automáticamente
         irAInicio();
     </script>
-    <script>
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'IMG' && e.target.closest('.producto-card')) {
-                var modal = document.getElementById("miModal");
-                var detalleInfo = document.getElementById("detalle-info");
-                var tarjeta = e.target.closest('.producto-card');
-                var nombreProducto = tarjeta.querySelector('h3') ? tarjeta.querySelector('h3').innerText : '';
-
-                const prodId = tarjeta.querySelector('img').getAttribute('onclick').match(/\d+/)[0];
-                const prod = productos.find(p => p.id == prodId);
-
-                document.getElementById("modal-titulo").innerText = nombreProducto;
-                detalleInfo.innerHTML = `
-                    <img src="${e.target.src}" style="max-width:100%; height:180px; object-fit: contain; border-radius:12px; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto; background: #fff;">
-                    <p style="font-size: 1rem; color: #555; line-height: 1.5; text-align: center;">${prod.desc}</p>
-                `;
-                modal.style.display = "block";
-            }
-        });
-    </script>
 </body>
 </html>
-
