@@ -150,16 +150,14 @@
         <p class="subtitulo"><strong>Tecnología & Hogar</strong></p>
         <nav class="menu-botones">
             <button onclick="irAInicio()">INICIO</button>
-            <button onclick="filtrar('apple')">APPLE</button>
-            <button onclick="filtrar('samsung')">SAMSUNG</button>
-            <button onclick="filtrar('motorola')">MOTOROLA</button>
-            <button onclick="filtrar('xiaomi')">XIAOMI</button>
+            <button onclick="irATecnologia()">CELULARES / TECNO</button>
             <button onclick="filtrar('hogar')">HOGAR / VARIOS</button>
             <button onclick="filtrar('infantil')">ZONA INFANTIL</button>
             <button onclick="filtrar('salud')">SALUD Y BELLEZA</button>
+            <button onclick="filtrar('perfumes')">PERFUMES</button>
             <button onclick="mostrarNosotros()">SOBRE NOSOTROS</button>
         </nav>
-    </header>
+        </header>
 
     <main id="contenedor-principal">
     </main>
@@ -193,7 +191,7 @@
             { id: 104, nombre: "Motorola G17 Power 8/256Gb", cat: "motorola", img: "fotos/motorolag17power.png", desc: "Batería 6000mAh, Pantalla 90Hz.", precio: "365000" },
             { id: 105, nombre: "Motorola G35 8/256Gb", cat: "motorola", img: "fotos/motog35.jpg", desc: "Sonido Dolby Atmos. Sin cargador.", precio: "398500" },
             { id: 106, nombre: "Motorola G50 Fusion 8/256Gb", cat: "motorola", img: "fotos/50fusion.jpg", desc: "Diseño Slim, Pantalla OLED. Sin cargador.", precio: "380000" },
-            { id: 107, nombre: "Motorola G86 Power 8/512GB", cat: "motorola", img: "fotos/motog86power.jpg", desc: "Cámara 50MP OIS, Snapdragon Elite.", precio: "430000" },
+            { id: 107, font_name: "Motorola G86 Power 8/512GB", nombre: "Motorola G86 Power 8/512GB", cat: "motorola", img: "fotos/motog86power.jpg", desc: "Cámara 50MP OIS, Snapdragon Elite.", precio: "430000" },
             { id: 108, nombre: "Motorola Edge 60 Fusion 8/256Gb", cat: "motorola", img: "fotos/moto60fusion.jpg", desc: "Pantalla pOLED curva, procesador potente, carga ultra rápida.", precio: "450000" },
             { id: 109, nombre: "Motorola G86 8/256Gb", cat: "motorola", img: "fotos/motog86.jpg", desc: "Gran rendimiento, excelente cámara nocturna.", precio: "398000" },
             { id: 110, nombre: "Motorola G56 8/512Gb", cat: "motorola", img: "fotos/motog56.jpg", desc: "Almacenamiento gigante, diseño elegante and liviano.", precio: "380000" },
@@ -220,7 +218,7 @@
             { id: 310, nombre: "Xiaomi Note 14 Pro Plus 12/512GB", cat: "xiaomi", img: "fotos/xiaominote14proplus512.jpg", desc: "Máxima potencia y almacenamiento gigante.", precio: "650000" },
             { id: 304, nombre: "Xiaomi Note 15 6/128Gb", cat: "xiaomi", img: "fotos/xiaominote15.jpg", desc: "Pantalla fluida con diseño elegante.", precio: "299500" },
             { id: 305, nombre: "Xiaomi Note 15 8/256Gb", cat: "xiaomi", img: "fotos/xiaominote15.jpg", desc: "Gran almacenamiento, pantalla de 120Hz.", precio: "398500" },
-            { id: 306, nombre: "Xiaomi Note 15 Pro 8/256GB", cat: "xiaomi", img: "fotos/xiaominote15pro.jpg", desc: "Acabado premium, carga ultra rápida.", precio: "420000" },
+            { id: 306, font_name: "Xiaomi Note 15 Pro 8/256GB", nombre: "Xiaomi Note 15 Pro 8/256GB", cat: "xiaomi", img: "fotos/xiaominote15pro.jpg", desc: "Acabado premium, carga ultra rápida.", precio: "420000" },
             { id: 311, nombre: "Xiaomi Note 15 Pro 8/512Gb", cat: "xiaomi", img: "fotos/xiaominote15pro.jpg", desc: "Pantalla AMOLED and gran rendimiento.", precio: "510000" },
             { id: 312, nombre: "Xiaomi Note 15 Pro Plus 8/256Gb", cat: "xiaomi", img: "fotos/xiaominote15proplus.jpg", desc: "Lo último de Xiaomi con diseño premium.", precio: "580000" },
             { id: 313, nombre: "Xiaomi X7 Pro 8/256Gb", cat: "xiaomi", img: "fotos/pocox7pro.jpg", desc: "Sonido Hi-Res, gran rendimiento.", precio: "530000" },
@@ -230,17 +228,26 @@
             { id: 307, nombre: "Xiaomi M8 8/512Gb", cat: "xiaomi", img: "fotos/pocom8.jpg", desc: "Gran almacenamiento, ideal juegos.", precio: "410000" },
             { id: 318, nombre: "Xiaomi M8 Pro 12/512Gb", cat: "xiaomi", img: "fotos/m8pro.jpg", desc: "Rendimiento extremo para exigentes.", precio: "550000" },
             { id: 317, nombre: "Xiaomi F8 Ultra 12/256Gb", cat: "xiaomi", img: "fotos/f8ultra.jpg", desc: "Procesador élite, enfriamiento líquido.", precio: "1100000" },
+            // AUDIO & ACCESORIOS
+            { id: 405, nombre: "JBL Flip 7", cat: "audio", img: "fotos/jblflip7.jpg", desc: "Resistente al agua, Sonido Pro JBL.", precio: "175000" },
+            { id: 451, nombre: "Rayban Meta Wayfarer Gen 2 Matte Black", cat: "audio", img: "fotos/raybanmeta.jpg", desc: "Lentes inteligentes con cámara integrada, audio abierto de alta fidelidad y control por voz.", precio: "740000" },
+            { id: 452, nombre: "Canon EOS Rebel T7 Kit Premium", cat: "audio", img: "fotos/canon.jpg", desc: "Cámara Réflex ideal para fotografía profesional. Sensor de 24.1 MP, conectividad WiFi y NFC.", precio: "998000" },
+            { id: 453, nombre: "Insta360 X5 8k Motorcycle Bundle", cat: "audio", img: "fotos/instamoto.jpg", desc: "Cámara de acción 360 grados con resolución extrema 8K. Kit especial con soportes para moto.", precio: "1150000" },
+
+            // GAMING
+            { id: 411, nombre: "Joystick PS5 Original", cat: "gaming", img: "fotos/joystick.jpg", desc: "Control inalámbrico DualSense con retroalimentación háptica.", precio: "140000" },
+            { id: 461, nombre: "Playstation 5 1TB", cat: "gaming", img: "fotos/playstation5.jpg", desc: "Consola con almacenamiento SSD de 1TB de alta velocidad y gráficos 4K fluidos.", precio: "1100000" },
+            { id: 462, nombre: "Xbox Series S 1TB", cat: "gaming", img: "fotos/xbox.jpg", desc: "Rendimiento de nueva generación en formato digital con almacenamiento extendido de 1TB.", precio: "996000" },
+            { id: 463, nombre: "Nintendo Switch 2 USA", cat: "gaming", img: "fotos/nintendo2.jpg", desc: "La consola híbrida de nueva generación. Mayor potencia gráfica y rendimiento portátil.", precio: "870000" },
 
             // HOGAR
             { id: 401, nombre: "Ducha inteligente C/display", cat: "hogar", img: "fotos/ducha.jpg", desc: "Diseño moderno con iluminación LED, display digital.", precio: "73000" },
             { id: 402, nombre: "Copa Vidrio grueso borde dorado x6", cat: "hogar", img: "fotos/copa.jpg", desc: "Cristal premium con filo dorado.", precio: "29999" },
             { id: 403, nombre: "Vaso vidrio grueso con borde dorado x6", cat: "hogar", img: "fotos/vasovidriobordedorado.jpg", desc: "Vidrio templado con terminación lujo.", precio: "24999" },
             { id: 404, nombre: "Camara triple domo", cat: "hogar", img: "fotos/camarajortan6.jpg", desc: "WiFi, Visión nocturna, Audio 2 vías.", precio: "85000" },
-            { id: 405, nombre: "JBL Flip 7", cat: "hogar", img: "fotos/jblflip7.jpg", desc: "Resistente al agua, Sonido Pro JBL.", precio: "175000" },
             { id: 408, nombre: "Cafetera portatil expresso capsulas", cat: "hogar", img: "fotos/cafeportatil.jpg", desc: "Tu café favorito donde sea que estés, sin pilas.", precio: "82000" },
             { id: 409, nombre: "Set de vajilla X12", cat: "hogar", img: "fotos/setdevajilla.jpg", desc: "12 Piezas, 4 platos playos, 4 platos hondos, 4 vasos largos.", precio: "42000" },
             { id: 410, nombre: "Termo Messi c/mate", cat: "hogar", img: "fotos/termo.jpg", desc: "Termo con manija y grabado de Messi, viene con mate grabado y bombilla.", precio: "43000" },
-            { id: 411, nombre: "Joystick PS5 Original", cat: "hogar", img: "fotos/joystick.jpg", desc: "Control inalámbrico DualSense. ", precio: "140000" },
             { id: 412, nombre: "Aspiradora portátil inalámbrica", cat: "hogar", img: "fotos/aspiradoraportatil.jpg", desc: "Uso básico hogareño. Teclados, sillones, escritorios, etc...", precio: "25000" },
 
             // ZONA INFANTIL
@@ -248,24 +255,69 @@
             { id: 407, nombre: "Gatito Sorpresa Peluche", cat: "infantil", img: "fotos/gatitosorpresa.jpg", desc: "Sacalo de la cola y descubri el gatito sorpresa!.", precio: "29999" },
 
             // SALUD Y BELLEZA
-            { id: 501, nombre: "Crema para Psoriasis 250Grs", cat: "salud", img: "fotos/crema.jpg", desc: "Crema exfoliante y reparadora con ingredientes de origen natural sin corticoides para el control de las descamaciones de la piel. Caracteristicas: No mancha, rapida absorcion, resultados notorios.", precio: "37000" },
-            { id: 502, nombre: "Reductor de papada", cat: "salud", img: "fotos/papada.jpg", desc: "Dispositivo inteligente de masaje facial y cuello. Ayuda a definir el contorno del rostro, reduce la flacidez y mejorar la elasticidad de la piel con tecnología de microcorrientes.", precio: "29999" },
-            { id: 503, nombre: "Masajeador de piernas inalambrico", cat: "salud", img: "fotos/masajeadorpiernas.jpg", desc: "Masajeador portátil de compresión que alivia el cansancio, mejora la circulación y relaja los músculos. Ideal para usar después de entrenar o de un día largo.", precio: "49999" },
-            { id: 504, nombre: "Espejo maquillaje Led", cat: "salud", img: "fotos/espejomaq.jpg", desc: "Espejo de alta definición con pantalla táctil, movimiento de 180 grados y paneles laterales con aumentos de 1x, 2x y 3x para lograr el máximo detalle en tu rutina.", precio: "24999" }
+            { id: 501, nombre: "Crema para Psoriasis 250Grs", cat: "salud", img: "fotos/crema.jpg", desc: "Crema exfoliante y reparadora con ingredientes de origen natural sin corticoides.", precio: "37000" },
+            { id: 502, nombre: "Reductor de papada", cat: "salud", img: "fotos/papada.jpg", desc: "Dispositivo inteligente de masaje facial y cuello con tecnología de microcorrientes.", precio: "29999" },
+            { id: 503, nombre: "Masajeador de piernas inalambrico", cat: "salud", img: "fotos/masajeadorpiernas.jpg", desc: "Masajeador portátil de compresión que alivia el cansancio y relaja los músculos.", precio: "49999" },
+            { id: 504, nombre: "Espejo maquillaje Led", cat: "salud", img: "fotos/espejomaq.jpg", desc: "Espejo de alta definición con paneles laterales con aumentos de 1x, 2x y 3x.", precio: "24999" },
+
+            // PERFUMES
+            { id: 601, nombre: "Perfume Burberry Her Fem EDP 100ml", cat: "perfumes", img: "fotos/burberry.jpg", desc: "Fragancia frutal británica, con notas de bayas rojas, jazmín y ámbar. Femenino y elegante.", precio: "260000" },
+            { id: 602, nombre: "Perfume CH Bad Boy Le Parfum 100ml", cat: "perfumes", img: "fotos/badboy.jpg", desc: "Fragancia audaz y misteriosa con notas de cannabis, cuero y pimienta negra. Sofisticación pura.", precio: "190000" },
+            { id: 603, nombre: "Perfume Chanel Bleu EDP 100ml", cat: "perfumes", img: "fotos/bleu.jpg", desc: "Un clásico amaderado aromático irresistible, con notas de sándalo, cedro y cítricos.", precio: "390000" },
+            { id: 604, nombre: "Perfume YSL Black Opium EDP 90ml", cat: "perfumes", img: "fotos/opium.jpg", desc: "Fragancia cautivadora y sensual, destacando notas de café negro, vainilla y flores blancas.", precio: "190000" },
+            { id: 605, nombre: "Perfume YSL Libre Fem EDP 90ml", cat: "perfumes", img: "fotos/libre.jpg", desc: "La fragancia de la libertad. Mezcla perfecta de lavanda de Francia, azahar de Marruecos y almizcle.", precio: "250000" }
         ];
 
         const contenedor = document.getElementById('contenedor-principal');
 
         function irAInicio() {
-    window.scrollTo(0, 0);
-    contenedor.innerHTML = `
-        <div class="seccion-texto">
-            <img src="fotos/portadafinal.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
-            <h2 class="orange">Tienda Mandarin | 15 años conectándote con lo mejor.</h2>
-            <p style="margin-top: 10px; font-size: 1.1rem;">Lo último en tecnología y equipamiento para tu hogar, a un clic de distancia.</p>
-            <p style="font-style: italic; color: #7f8c8d; margin-top: 15px; font-size: 1rem; font-weight: bold; letter-spacing: 0.5px;">Hacemos que pase.</p>
-    `;
-}
+            window.scrollTo(0, 0);
+            contenedor.innerHTML = `
+                <div class="seccion-texto">
+                    <img src="fotos/portadafinal.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
+                    <h2 class="orange">Tienda Mandarin | 15 años conectándote con lo mejor.</h2>
+                    <p style="margin-top: 10px; font-size: 1.1rem;">Lo último en tecnología y equipamiento para tu hogar, a un clic de distancia.</p>
+                    <p style="color: var(--orange); font-style: italic; margin-top: 15px; font-size: 1rem; font-weight: bold; letter-spacing: 0.5px;">Hacemos que pase.</p>
+                </div>
+            `;
+        }
+
+        function irATecnologia() {
+            window.scrollTo(0, 0);
+            contenedor.innerHTML = `
+                <div class="seccion-celulares" style="text-align: center; padding: 10px 20px;">
+                    <h2 class="orange" style="margin-bottom: 30px; font-size: 1.5rem;">Elegí la marca o categoría</h2>
+
+                    <div class="marcas-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 900px; margin: 0 auto;">
+
+                        <div class="tarjeta-marca" onclick="filtrar('apple')" style="border: 1px solid var(--border-color); padding: 25px 20px; border-radius: 12px; width: 140px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.03); background: #ffffff; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'">
+                            <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;">Apple</h3>
+                        </div>
+
+                        <div class="tarjeta-marca" onclick="filtrar('samsung')" style="border: 1px solid var(--border-color); padding: 25px 20px; border-radius: 12px; width: 140px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.03); background: #ffffff; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'">
+                            <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;">Samsung</h3>
+                        </div>
+
+                        <div class="tarjeta-marca" onclick="filtrar('motorola')" style="border: 1px solid var(--border-color); padding: 25px 20px; border-radius: 12px; width: 140px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.03); background: #ffffff; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'">
+                            <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;">Motorola</h3>
+                        </div>
+
+                        <div class="tarjeta-marca" onclick="filtrar('xiaomi')" style="border: 1px solid var(--border-color); padding: 25px 20px; border-radius: 12px; width: 140px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.03); background: #ffffff; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'">
+                            <h3 style="margin: 0; color: var(--text-dark); font-size: 1.2rem;">Xiaomi</h3>
+                        </div>
+
+                        <div class="tarjeta-marca" onclick="filtrar('audio')" style="border: 1px solid var(--orange); padding: 25px 20px; border-radius: 12px; width: 140px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.03); background: #ffffff; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'">
+                            <h3 style="margin: 0; color: var(--orange); font-size: 1.1rem;">Audio / Accesorios</h3>
+                        </div>
+
+                        <div class="tarjeta-marca" onclick="filtrar('gaming')" style="border: 1px solid var(--orange); padding: 25px 20px; border-radius: 12px; width: 140px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.03); background: #ffffff; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-5px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'">
+                            <h3 style="margin: 0; color: var(--orange); font-size: 1.2rem;">Gaming</h3>
+                        </div>
+
+                    </div>
+                </div>
+            `;
+        }
 
         function mostrarNosotros() {
             window.scrollTo(0, 0);
@@ -287,7 +339,7 @@
             const grid = contenedor.querySelector('.grid-productos');
 
             if (filtrados.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: #7f8c8d;">No hay productos disponibles en esta categoría por el momento.</p>`;
+                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: #7f8c8d; padding-top: 30px;">No hay productos disponibles en esta categoría por el momento.</p>`;
                 return;
             }
 
