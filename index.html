@@ -257,16 +257,15 @@
         const contenedor = document.getElementById('contenedor-principal');
 
         function irAInicio() {
-            window.scrollTo(0, 0);
-            contenedor.innerHTML = `
-                <div class="seccion-texto">
-                    <img src="fotos/portadafinal.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
-                    <h2 class="orange">¡Bienvenido/a a Tienda Mandarin!</h2>
-                    <p style="margin-top: 10px; font-size: 1.1rem;">Más de 15 años ofreciéndote lo mejor. Los años pasan, pero nuestra pasión por la tecnología y el hogar sigue intacta.</p>
-                    <p style="color: #7f8c8d; margin-top: 5px;"><i>Seleccioná una categoría arriba para ver nuestro stock.</i></p>
-                </div>
-            `;
-        }
+    window.scrollTo(0, 0);
+    contenedor.innerHTML = `
+        <div class="seccion-texto">
+            <img src="fotos/portadafinal.jpg" alt="Tienda Mandarin Portada" style="width: 100%; max-width: 900px; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onerror="this.style.display='none'">
+            <h2 class="orange">Tienda Mandarin | 15 años conectándote con lo mejor.</h2>
+            <p style="margin-top: 10px; font-size: 1.1rem;">Lo último en tecnología y equipamiento para tu hogar, a un clic de distancia.</p>
+            <p style="font-style: italic; color: #7f8c8d; margin-top: 15px; font-size: 1rem; font-weight: bold; letter-spacing: 0.5px;">Hacemos que pase.</p>
+    `;
+}
 
         function mostrarNosotros() {
             window.scrollTo(0, 0);
