@@ -136,7 +136,7 @@
 
     <header>
         <img src="fotos/logo.jpg" alt="Tienda Mandarin Logo" class="logo-img" onerror="this.style.display='none'">
-        <h1><span style="color: #1e90ff;">Tienda</span> Mandarin</h1>
+        <h1>Tienda Mandarin</h1>
 
         <div class="header-contacto">
             <a href="https://wa.me/5491136575450" target="_blank">
@@ -157,7 +157,7 @@
             <button onclick="filtrar('perfumes')">PERFUMES</button>
             <button onclick="mostrarNosotros()">SOBRE NOSOTROS</button>
         </nav>
-        </header>
+    </header>
 
     <main id="contenedor-principal">
     </main>
@@ -202,7 +202,7 @@
             { id: 203, nombre: "Samsung A37 8/256Gb", cat: "samsung", img: "fotos/a37.jpg", desc: "Pantalla Super AMOLED, fluidez total.", precio: "598000" },
             { id: 204, font_name: "Samsung A57 8/256Gb", nombre: "Samsung A57 8/256Gb", cat: "samsung", img: "fotos/a57.jpg", desc: "Resistente IP67, Gran batería para todo el día.", precio: "650000" },
             { id: 205, nombre: "Samsung S25 8/256", cat: "samsung", img: "fotos/samsungs25fe.jpg", desc: "Edición Fan con procesador optimizado.", precio: "1100000" },
-            { id: 206, nombre: "Samsung S26 12/256", cat: "samsung", img: "fotos/s26.jpg", desc: "Alta gama, rendimiento de última generación.", precio: "1160000" },
+            { id: 206, nombre: "Samsung S26 12/256", cat: "samsung", img: "fotos/s26.jpg", desc: "Alta gama, rendimiento de última generation.", precio: "1160000" },
             { id: 207, nombre: "Samsung S26 Plus 12/512Gb", cat: "samsung", img: "fotos/s26plus.jpg", desc: "Pantalla más grande, máxima capacidad.", precio: "1640000" },
             { id: 208, nombre: "Samsung S26 Ultra 12/256Gb", cat: "samsung", img: "fotos/s26ultra.jpg", desc: "Cámara 200MP, IA de última generación.", precio: "1600000" },
             { id: 209, nombre: "Samsung S26 Ultra 12/512Gb", cat: "samsung", img: "fotos/s26ultra512.jpg", desc: "Cámara 200MP, el más potente de la línea.", precio: "1800000" },
@@ -350,7 +350,7 @@
                 grid.innerHTML += `
                     <div class="producto-card">
                         <div>
-                            <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/200?text=Foto'">
+                            <img src="${p.img}" alt="${p.nombre}" onclick="verDetalles(${p.id})" style="cursor: pointer;">
                             <h3>${p.nombre}</h3>
                         </div>
                         <div>
