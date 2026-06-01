@@ -155,7 +155,7 @@
             <button onclick="filtrar('infantil')">ZONA INFANTIL</button>
             <button onclick="filtrar('salud')">SALUD Y BELLEZA</button>
             <button onclick="filtrar('perfumes')">PERFUMES</button>
-            <button onclick="mostrarNosotros()">SOBRE NOSOTROS</button>
+            <button onclick="mostrarFAQ()">PREGUNTAS FRECUENTES</button>
         </nav>
     </header>
 
@@ -326,15 +326,56 @@
             `;
         }
 
-        function mostrarNosotros() {
+        function mostrarFAQ() {
             window.scrollTo(0, 0);
             contenedor.innerHTML = `
-                <div class="seccion-texto" style="text-align: left; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid var(--border-color);">
-                    <h2 class="orange" style="text-align: center; margin-bottom: 20px;">Sobre Nosotros</h2>
-                    <p style="margin-bottom: 15px;">Hace más de 15 años nacimos con una idea muy simple pero que hoy en día cuesta encontrar: ofrecer la mejor tecnología importada y artículos para el hogar, con una atención transparente, honesta y sincera.</p>
-                    <p style="margin-bottom: 15px;">En Tienda Mandarin no nos interesa venderte por vender. Sabemos que cambiar el celular, elegir una herramienta para el día a día o equipar tu casa es una inversión importante. Por eso, nos tomamos el tiempo de escucharte, asesorarte y recomendarte exactamente lo que necesitás.</p>
-                    <p style="margin-bottom: 15px;"><strong>¿Qué nos define?</strong> Trayectoria, calidad de importación y atención humana.</p>
-                    <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #7f8c8d;">Gracias por seguir eligiéndonos día a día. Sinceramente... sin vos, no seríamos lo que somos.</p>
+                <div class="seccion-texto" style="text-align: left; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid var(--border-color); max-width: 850px; margin: 0 auto;">
+
+                    <h2 class="orange" style="text-align: center; margin-bottom: 25px; font-size: 1.6rem;">🤔 Preguntas Frecuentes</h2>
+
+                    <details style="margin-bottom: 15px; background: var(--bg-light); padding: 12px 18px; border-radius: 10px; cursor: pointer; border: 1px solid var(--border-color);">
+                        <summary style="font-weight: bold; color: var(--text-dark); font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            💳 ¿Se puede pagar con tarjeta de crédito? <span class="orange">▼</span>
+                        </summary>
+                        <p style="margin-top: 10px; color: #555; line-height: 1.5; padding-left: 5px;">
+                            ¡Sí, claro! Podés pagar con tarjeta y financiar tu compra en hasta <strong>6 cuotas fijas</strong>. Tené en cuenta que las tarjetas operan con un recargo financiero, por lo que el valor final es diferente al precio promocional publicado en la web (que es exclusivo para efectivo o transferencia).
+                        </p>
+                    </details>
+
+                    <details style="margin-bottom: 15px; background: var(--bg-light); padding: 12px 18px; border-radius: 10px; cursor: pointer; border: 1px solid var(--border-color);">
+                        <summary style="font-weight: bold; color: var(--text-dark); font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            🛵 ¿Hacen envíos a domicilio? <span class="orange">▼</span>
+                        </summary>
+                        <p style="margin-top: 10px; color: #555; line-height: 1.5; padding-left: 5px;">
+                            ¡Llegamos a todos lados! Si estás en <strong>Capital Federal o Gran Buenos Aires</strong>, te lo enviamos en el día mediante motomensajeria (el costo varía según la zona). Si estás en el <strong>interior del país</strong>, despachamos por Correo Argentino o Vía Cargo, y te pasamos el número de seguimiento al toque para que veas dónde está tu paquete.
+                        </p>
+                    </details>
+
+                    <details style="margin-bottom: 15px; background: var(--bg-light); padding: 12px 18px; border-radius: 10px; cursor: pointer; border: 1px solid var(--border-color);">
+                        <summary style="font-weight: bold; color: var(--text-dark); font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            📍 ¿Se puede pasar a retirar personalmente? <span class="orange">▼</span>
+                        </summary>
+                        <p style="margin-top: 10px; color: #555; line-height: 1.5; padding-left: 5px;">
+                            Por el momento nos encontramos con nuestra oficina en refacciones, así que estamos trabajando <strong>exclusivamente con envíos</strong>. ¡Pero tranqui! Muy pronto la tendremos lista y equipada para recibirte y que puedas pasar a buscar tus productos en persona.
+                        </p>
+                    </details>
+
+                    <details style="margin-bottom: 30px; background: var(--bg-light); padding: 12px 18px; border-radius: 10px; cursor: pointer; border: 1px solid var(--border-color);">
+                        <summary style="font-weight: bold; color: var(--text-dark); font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            🤝 ¿Por qué los precios acá son más baratos que en su Mercado Libre? <span class="orange">▼</span>
+                        </summary>
+                        <p style="margin-top: 10px; color: #555; line-height: 1.5; padding-left: 5px;">
+                            La respuesta es simple: Mercado Libre cobra comisiones altísimas por publicar y vender en su plataforma, lo que nos obliga a inflar los precios allá. Comprando directo por acá te ahorrás ese costo intermediario, conseguís el precio real y encima te damos una atención personalizada y mucho más rápida. 😉
+                        </p>
+                    </details>
+
+                    <!-- SECCIÓN SOBRE NOSOTROS INTEGRADA ABAJO -->
+                    <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 25px;">
+                    <h3 class="orange" style="text-align: center; margin-bottom: 15px;">Sobre Nosotros</h3>
+                    <p style="margin-bottom: 12px; color: #555;">Hace más de 15 años nacimos con una idea muy simple: ofrecer la mejor tecnología importada y artículos para el hogar, con una atención transparente, honesta y sincera.</p>
+                    <p style="margin-bottom: 12px; color: #555;">En Tienda Mandarin no nos interesa vender por vender. Sabemos que cambiar el celular o equipar tu casa es una inversión importante. Por eso, nos tomamos el tiempo de escucharte y recomendarte exactamente lo que necesitás.</p>
+                    <p style="margin-bottom: 12px; color: #555;"><strong>¿Qué nos define?</strong> Trayectoria, calidad de importación y atención humana.</p>
+                    <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #7f8c8d; font-size: 0.95rem;">Gracias por seguir eligiéndonos día a día. Sinceramente... sin vos, no seríamos lo que somos.</p>
                 </div>
             `;
         }
