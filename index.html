@@ -424,12 +424,30 @@
                 <p style="font-size: 1rem; color: #555; line-height: 1.5; text-align: center;">${prod.desc}</p>
             `;
             document.getElementById('miModal').style.display = 'block';
+
+            // HACK PRO: Metemos un estado falso en el historial para capturar el boton atras del celu
+            history.pushState({ modalAbierto: true }, "");
         }
 
-        function cerrarModal() { document.getElementById('miModal').style.display = "none"; }
+        function cerrarModal() {
+            document.getElementById('miModal').style.display = "none";
+
+            // Si el modal se cierra de forma manual, limpiamos el estado falso del historial si es que existe
+            if (history.state && history.state.modalAbierto) {
+                history.back();
+            }
+        }
 
         // Arranca en inicio automáticamente
         irAInicio();
+        // Escuchamos el evento 'popstate' (cuando el usuario va hacia atras en el navegador o celu)
+        window.addEventListener('popstate', function (event) {
+            const modal = document.getElementById('miModal');
+            // Si el modal está visible, lo ocultamos y evitamos que se salga de la pagina
+            if (modal.style.display === 'block') {
+                modal.style.display = "none";
+            }
+        });
     </script>
 </body>
 </html>
