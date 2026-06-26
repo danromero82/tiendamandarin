@@ -130,6 +130,11 @@
         .modal-content { background-color: var(--card-white); margin: 12% auto; padding: 25px; border-radius: 16px; max-width: 450px; border: none; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.15); color: var(--text-dark); }
         .close { position: absolute; right: 15px; top: 8px; font-size: 28px; cursor: pointer; color: #a0a0a0; transition: color 0.2s; }
         .close:hover { color: var(--orange); }
+
+        /* OCULTAR PRECIOS TEMPORALMENTE POR LA INFLACIÓN DEL DÓLAR */
+        .precio-contenedor {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -185,7 +190,7 @@
             { id: 9, nombre: "Macbook Neo 13\" 8/256Gb", cat: "apple", img: "fotos/macbookneo.jpg", desc: "Potencia ideal, pantalla Liquid Retina.", precio: "1120000" },
             { id: 10, nombre: "Ipad 11 A16 Bionic 128Gb", cat: "apple", img: "fotos/ipad11.jpg", desc: "La tableta estándar más reciente de Apple. Diseño renovado con bordes rectos, pantalla Liquid Retina de 11 pulgadas y excelente potencia para el estudio o el entretenimiento diario.", precio: "598000" },
             { id: 454, nombre: "Airpods 3 Pro", cat: "apple", img: "fotos/airpods3pro.jpg", desc: "Cancelación de ruido. Traducción en vivo. Certificación IP57. Atendé y rechazá llamadas con gestos de la cabeza.", precio: "380000" },
-            { id: 455, nombre: "Cargador Magsafe Duo Apple Original", cat: "apple", img: "fotos/magsafe.jpg", desc: "Base de carga inalámbrica portátil diseñada para cargar simultáneamente un iPhone y un Apple Watch.", precio: "180000" },
+            { id: 455, nombre: "Cargador Magsafe Duo Apple Original", cat: "apple", img: "fotos/magsafe.jpg", desc: "Base de carga inalámbrica portátil diseñada para cargar simultáneamente un iPhone and un Apple Watch.", precio: "180000" },
 
             // MOTOROLA
             { id: 101, nombre: "Motorola G06 4/128Gb", cat: "motorola", img: "fotos/motog06.jpg", desc: "Diseño moderno, pantalla fluida.", precio: "198500" },
@@ -231,7 +236,7 @@
             { id: 319, nombre: "Xiaomi Poco X8 Pro 8/512Gb", cat: "xiaomi", img: "fotos/pocox8pro.jpg", desc: "Pantalla AMOLED de alta tasa de refresco, procesador potente, almacenamiento de 512GB y excelente autonomía de batería.", precio: "598000" },
             { id: 302, nombre: "Xiaomi M7 8/256Gb", cat: "xiaomi", img: "fotos/m7.jpg", desc: "Potencia y rendimiento para gamers.", precio: "298500" },
             { id: 307, nombre: "Xiaomi M8 8/512Gb", cat: "xiaomi", img: "fotos/pocom8.jpg", desc: "Gran almacenamiento, ideal juegos.", precio: "410000" },
-            { id: 318, nombre: "Xiaomi M8 Pro 12/512Gb", cat: "xiaomi", img: "fotos/m8pro.jpg", desc: "Rendimiento extremo para exigentes.", precio: "550000" },
+            { id: 318, nombre: "Xiaomi M8 Pro 12/512Gb", cat: "m8pro.jpg", desc: "Rendimiento extremo para exigentes.", precio: "550000" },
             { id: 317, nombre: "Xiaomi F8 Ultra 12/256Gb", cat: "xiaomi", img: "fotos/f8ultra.jpg", desc: "Procesador élite, enfriamiento líquido.", precio: "1100000" },
 
             // AUDIO & ACCESORIOS
@@ -402,7 +407,7 @@
                                 <span style="font-size: 12px; color: var(--orange);">▼</span>
                             </div>
                             <div style="display: none; padding: 16px; border-top: 1px solid var(--border-color); color: #555; font-size: 0.95rem; line-height: 1.6; background: white;">
-                                Por el momento nos encontramos con nuestra oficina en refacciones, así que estamos trabajando exclusivamente con envíos. ¡Pero tranqui! Muy pronto la tendremos lista y equipada para recibirte y que puedas pasar a buscar tus productos en persona.
+                                Por el momento nos encontramos con nuestra oficina en refacciones, así que estamos working exclusivamente con envíos. ¡Pero tranqui! Muy pronto la tendremos lista y equipada para recibirte y que puedas pasar a buscar tus productos en persona.
                             </div>
                         </div>
 
@@ -487,7 +492,7 @@
                             <a href="https://wa.me/5491136575450?text=${mensajeWa}"
                                class="btn-whatsapp"
                                target="_blank">
-                                Consultar
+                                 Consultar
                             </a>
                         </div>
                     </div>
