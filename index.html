@@ -94,6 +94,7 @@ nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-
 .product-card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(0,0,0,.1);border-color:#ddd}
 .product-img{position:relative;background:#f7f7f7;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:20px}
 .product-img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.product-img img.img-vertical{max-width:72%;max-height:92%;object-fit:contain}
 .badge{position:absolute;left:12px;top:12px;background:var(--red);color:#fff;padding:5px 9px;border-radius:999px;font-size:.68rem;font-weight:850;letter-spacing:.5px}
 .product-info{padding:17px;display:flex;flex-direction:column;flex:1}
 .product-cat{color:var(--red);font-size:.72rem;font-weight:850;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
@@ -118,6 +119,7 @@ nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-
 .destacado-card{border:1px solid #e9e9e9;border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.055);display:flex;flex-direction:column}
 .destacado-img{aspect-ratio:1.25/1;background:#f7f7f7;display:flex;align-items:center;justify-content:center;padding:20px}
 .destacado-img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.destacado-img img.img-vertical{max-width:72%;max-height:92%;object-fit:contain}
 .destacado-info{padding:18px;display:flex;flex-direction:column;flex:1}
 .destacado-info small{color:var(--red);font-weight:850;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
 .destacado-info h3{font-size:1.05rem;margin-bottom:8px}
@@ -215,7 +217,7 @@ nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-
 <div class="destacado-info"><small>Apple</small><h3>iPhone 17 Pro Max 256GB</h3><p>Diseño premium, gran pantalla y una experiencia de alta gama.</p><button onclick="mostrarProductos('apple')" type="button">Ver Apple</button></div>
 </article>
 <article class="destacado-card">
-<div class="destacado-img"><img alt="Cochecito triciclo con asiento 360" decoding="async" loading="lazy" onerror="this.style.display='none'" src="fotos/cochecito.jpg"/></div>
+<div class="destacado-img"><img class="img-vertical" alt="Cochecito triciclo con asiento 360" decoding="async" loading="lazy" onerror="this.style.display='none'" src="fotos/cochecito.jpg"/></div>
 <div class="destacado-info"><small>Zona infantil</small><h3>Cochecito triciclo con asiento 360°</h3><p>Práctico, cómodo y adaptable para acompañar cada paseo.</p><button onclick="mostrarProductos('infantil')" type="button">Ver Infantil</button></div>
 </article>
 <article class="destacado-card">
@@ -315,7 +317,7 @@ nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-
 </article>
 <article class="product-card" data-cat="hogar">
 <div class="product-img"><img alt="Tostadora eléctrica 2 panes" decoding="async" loading="lazy" src="fotos/tostadora.jpg"/></div>
-<div class="product-info"><h3>Tostadora eléctrica 2 panes</h3><p>Potencia de 750 W, capacidad para 2 panes, 7 niveles de temperatura y bandeja recogemigas extraíble.</p><div class="card-actions"><a class="btn-buy" href="https://wa.me/5491136575450?text=Hola%2C%20me%20interesa%20la%20tostadora%20el%C3%A9ctrica%20de%202%20panes" rel="noopener noreferrer" target="_blank">Consultar</a></div></div>
+<div class="product-info"><div class="product-cat">Hogar</div><h3>Tostadora eléctrica 2 panes</h3><p>Potencia de 750 W, capacidad para 2 panes, 7 niveles de temperatura y bandeja recogemigas extraíble.</p><div class="card-actions"><a class="btn-buy" href="https://wa.me/5491136575450?text=Hola%2C%20me%20interesa%20la%20tostadora%20el%C3%A9ctrica%20de%202%20panes" rel="noopener noreferrer" target="_blank">Consultar</a></div></div>
 </article>
 <article class="product-card" data-cat="hogar">
 <div class="product-img"><img alt="Sartén eléctrica" decoding="async" loading="lazy" onerror="this.onerror=null;this.style.display='none';" src="fotos/sartenelectrica.jpg"/></div>
@@ -542,7 +544,7 @@ nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-
 <div class="product-info"><div class="product-cat">Zona Infantil</div><h3>Andador caminador de bebé</h3><p>Plegable y reforzado, con 3 niveles de altura.</p><div class="card-actions"><a class="btn-buy" href="https://wa.me/5491136575450?text=Hola%2C%20me%20interesa%20el%20Andador%20caminador%20de%20beb%C3%A9" rel="noopener noreferrer" target="_blank">Consultar</a></div></div>
 </article>
 <article class="product-card" data-cat="infantil">
-<div class="product-img"><img alt="Cochecito triciclo asiento 360" decoding="async" loading="lazy" onerror="this.onerror=null;this.style.display='none';" src="fotos/cochecito.jpg"/></div>
+<div class="product-img"><img class="img-vertical" alt="Cochecito triciclo asiento 360" decoding="async" loading="lazy" onerror="this.onerror=null;this.style.display='none';" src="fotos/cochecito.jpg"/></div>
 <div class="product-info"><div class="product-cat">Zona Infantil</div><h3>Cochecito triciclo asiento 360</h3><p>Gomas engomadas PVC, capota grande y asiento giratorio 360.</p><div class="card-actions"><a class="btn-buy" href="https://wa.me/5491136575450?text=Hola%2C%20me%20interesa%20el%20Cochecito%20triciclo%20asiento%20360" rel="noopener noreferrer" target="_blank">Consultar</a></div></div>
 </article>
 <article class="product-card" data-cat="infantil">
@@ -562,7 +564,7 @@ nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-
 <div class="product-info"><div class="product-cat">Salud y Belleza</div><h3>Crema para Psoriasis 250 g</h3><p>Crema exfoliante y reparadora con ingredientes de origen natural, sin corticoides.</p><div class="card-actions"><a class="btn-buy" href="https://wa.me/5491136575450?text=Hola%2C%20me%20interesa%20la%20crema%20para%20psoriasis" rel="noopener noreferrer" target="_blank">Consultar</a></div></div>
 </article>
 <article class="product-card" data-cat="salud">
-<div class="product-img"><img alt="Shampoo para Psoriasis y Caspa" decoding="async" loading="lazy" onerror="this.onerror=null;this.style.display='none';" src="fotos/shampoo.jpg"/></div>
+<div class="product-img"><img alt="Shampoo para Psoriasis y Caspa" decoding="async" loading="lazy" onerror="this.onerror=null;this.style.display='none';" src="fotos/shampoo1.jpg"/></div>
 <div class="product-info"><div class="product-cat">Salud y Belleza</div><h3>Shampoo para Psoriasis y Caspa</h3><p>Ideal para el tratamiento de psoriasis, seborrea y caspa.</p><div class="card-actions"><a class="btn-buy" href="https://wa.me/5491136575450?text=Hola%2C%20me%20interesa%20el%20Shampoo%20para%20Psoriasis%20y%20Caspa" rel="noopener noreferrer" target="_blank">Consultar</a></div></div>
 </article>
 <article class="product-card" data-cat="salud">
@@ -640,6 +642,10 @@ function ocultarTodo(){
 
 function marcarMenu(vista){
   menuButtons.forEach(b=>b.classList.toggle('activo',b.dataset.view===vista));
+  const activo=document.querySelector(`.menu button[data-view="${vista}"]`);
+  if(activo){
+    activo.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  }
 }
 
 function mostrarVista(vista){
