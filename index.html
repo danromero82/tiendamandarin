@@ -271,11 +271,8 @@ header nav.nav-fijo{position:fixed;top:0;left:0;right:0;z-index:1000;border-top:
 }
 
 
-/* ===== VISOR DE FOTOS DE CELULARES ===== */
-.product-card[data-cat="apple"] .product-img img,
-.product-card[data-cat="samsung"] .product-img img,
-.product-card[data-cat="motorola"] .product-img img,
-.product-card[data-cat="xiaomi"] .product-img img{cursor:zoom-in}
+/* ===== VISOR DE FOTOS DE TODOS LOS PRODUCTOS ===== */
+.product-card .product-img img{cursor:zoom-in}
 
 .foto-modal{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(3px)}
 .foto-modal.visible{display:flex}
@@ -536,7 +533,7 @@ function pedirCerrarFotoModal(){
   }
 }
 
-document.querySelectorAll('.product-card[data-cat="apple"] .product-img img, .product-card[data-cat="samsung"] .product-img img, .product-card[data-cat="motorola"] .product-img img, .product-card[data-cat="xiaomi"] .product-img img').forEach(img=>{
+document.querySelectorAll('.product-card .product-img img').forEach(img=>{
   img.addEventListener('click',()=>abrirFotoModal(img));
 });
 
