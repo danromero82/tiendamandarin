@@ -1810,6 +1810,49 @@ body.modo-categoria .mandarin-header .header-tagline{display:none!important}
 }
 </style>
 
+
+<style id="mandarin-v27-photo-real-zoom">
+/*
+  Estas dos fotos tienen mucho margen vacío dentro del propio JPG.
+  Por eso no alcanza con agrandar el <img>: hay que hacer zoom visual.
+  Se mantiene la proporción y la tarjeta recorta solamente el excedente.
+*/
+.product-img{
+  overflow:hidden !important;
+}
+
+.product-img img[src*="hornofreidora.jpg"]{
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  transform:scale(1.55) !important;
+  transform-origin:center center !important;
+}
+
+.product-img img[src*="desmalezadora.jpg"]{
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  transform:scale(1.42) !important;
+  transform-origin:center center !important;
+}
+
+@media(max-width:760px){
+  .product-img img[src*="hornofreidora.jpg"]{
+    transform:scale(1.48) !important;
+  }
+  .product-img img[src*="desmalezadora.jpg"]{
+    transform:scale(1.36) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
