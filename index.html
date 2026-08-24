@@ -1774,6 +1774,42 @@ body.modo-categoria .mandarin-header .header-tagline{display:none!important}
 }
 </style>
 
+
+
+<style id="mandarin-v26-product-photo-boost">
+/* Ajuste fino: agrandar horno con freidora y desmalezadora sin deformar la imagen */
+.product-img img[src*="desmalezadora.jpg"]{
+  width:auto !important;
+  height:auto !important;
+  max-width:82% !important;
+  max-height:84% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  margin:auto !important;
+  display:block !important;
+}
+.product-img img[src*="hornofreidora.jpg"]{
+  width:auto !important;
+  height:auto !important;
+  max-width:88% !important;
+  max-height:84% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  margin:auto !important;
+  display:block !important;
+}
+@media(max-width:760px){
+  .product-img img[src*="desmalezadora.jpg"]{
+    max-width:84% !important;
+    max-height:86% !important;
+  }
+  .product-img img[src*="hornofreidora.jpg"]{
+    max-width:90% !important;
+    max-height:86% !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
