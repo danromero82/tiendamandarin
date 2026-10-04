@@ -2160,6 +2160,23 @@ body.modo-categoria .mandarin-header .header-tagline{display:none!important}
   }
 }
 </style>
+
+<style id="mandarin-v71-mesa">
+/* Agranda solo la foto de la mesa plegable sin deformarla */
+.product-img img[src="fotos/mesaplegable.jpg"]{
+  transform:scale(1.42);
+  transform-origin:center center;
+}
+.product-img:has(img[src="fotos/mesaplegable.jpg"]){
+  overflow:hidden;
+}
+@media(max-width:600px){
+  .product-img img[src="fotos/mesaplegable.jpg"]{
+    transform:scale(1.34);
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="mandarin-header" id="siteHeader">
