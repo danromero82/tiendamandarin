@@ -2123,7 +2123,7 @@ body.modo-categoria .mandarin-header .header-tagline{display:none!important}
   margin:0 0 16px;
 }
 .hogar-mini-nav::before{
-  content:"También podés ver:";
+  content:"Filtrar:";
   font-size:.72rem;
   font-weight:800;
   color:#777;
@@ -2143,6 +2143,11 @@ body.modo-categoria .mandarin-header .header-tagline{display:none!important}
 .hogar-mini-nav button:hover{
   border-color:var(--red);
   color:var(--red);
+}
+.hogar-mini-nav button.active{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
 }
 @media(max-width:600px){
   .hogar-mini-nav{
@@ -2552,7 +2557,7 @@ function mostrarVista(vista, guardar=true){
     xiaomiView.classList.add('visible');
     marcarMenu('tecnologia');
   }else if(vista==='hogar'){
-    hogarView.classList.add('visible');
+    mostrarProductos('hogar',false);
     marcarMenu('hogar');
   }else if(vista==='faq'){
     faqView.classList.add('visible');
@@ -2639,45 +2644,39 @@ const nombresFamiliaHogar={
   'exterior':'Exterior'
 };
 
-
-function actualizarMiniNavHogar(actual){
+function actualizarFiltroHogar(actual='todos'){
   if(!hogarMiniNav) return;
-  const familias=['cocina','interior','exterior'];
-  const otras=familias.filter(f=>f!==actual);
-  hogarMiniNav.innerHTML=otras.map(f=>
-    `<button type="button" onclick="mostrarHogarFamilia('${f}')">${nombresFamiliaHogar[f]}</button>`
+  const filtros=[['todos','Todos'],['cocina','Cocina'],['interior','Interior'],['exterior','Exterior']];
+  hogarMiniNav.innerHTML=filtros.map(([f,n])=>
+    `<button type="button" class="${f===actual?'active':''}" onclick="aplicarFiltroHogar('${f}')">${n}</button>`
   ).join('');
   hogarMiniNav.style.display='flex';
 }
 
-function mostrarHogarFamilia(familia, guardar=true){
-  ocultarTodo();
-  document.body.classList.add('modo-categoria');
-  productsSection.classList.add('visible');
-  document.getElementById('productsGrid').style.display='grid';
-  document.getElementById('productsTitle').textContent='Hogar · '+(nombresFamiliaHogar[familia]||'Productos');
-  document.getElementById('productsEyebrow').textContent='PRODUCTOS';
-  document.getElementById('productsBack').onclick=()=>mostrarVista('hogar');
-  actualizarMiniNavHogar(familia);
-  if(xiaomiFamilyBar) xiaomiFamilyBar.style.display='none';
-
+function aplicarFiltroHogar(filtro='todos'){
   let visible=0;
   cards.forEach(card=>{
     const esHogar=card.dataset.cat.split(/\s+/).includes('hogar');
-    const show=esHogar && card.dataset.hogarGroup===familia;
+    if(!esHogar) return;
+    const show=filtro==='todos' || card.dataset.hogarGroup===filtro;
     card.style.display=show?'flex':'none';
     if(show) visible++;
   });
-
+  actualizarFiltroHogar(filtro);
+  document.getElementById('productsTitle').textContent=filtro==='todos'?'Hogar':'Hogar · '+(nombresFamiliaHogar[filtro]||'Productos');
   empty.style.display=visible?'none':'block';
-  empty.textContent='No hay productos cargados en esta subcategoría por el momento.';
-  marcarMenu('hogar');
-  window.scrollTo({top:0,behavior:'smooth'});
+  empty.textContent='No hay productos cargados en esta categoría por el momento.';
+}
+
+function mostrarHogarFamilia(familia, guardar=true){
+  mostrarProductos('hogar',false);
+  aplicarFiltroHogar(familia);
   if(guardar) guardarEstado({tipo:'hogar-family',familia});
 }
 
 function mostrarProductos(categoria, guardar=true){
-  if(hogarMiniNav){ hogarMiniNav.style.display='none'; hogarMiniNav.innerHTML=''; }
+  const esHogar=categoria==='hogar';
+  if(hogarMiniNav && !esHogar){ hogarMiniNav.style.display='none'; hogarMiniNav.innerHTML=''; }
   ocultarTodo();
   document.body.classList.add('modo-categoria');
   productsSection.classList.add('visible');
@@ -2690,6 +2689,7 @@ function mostrarProductos(categoria, guardar=true){
   const esXiaomi=categoria==='xiaomi';
   if(xiaomiFamilyBar) xiaomiFamilyBar.style.display=esXiaomi?'flex':'none';
   if(esXiaomi) xiaomiFiltroActual='redmi';
+  if(esHogar) actualizarFiltroHogar('todos');
 
   let visible=0;
   cards.forEach(card=>{
@@ -2700,6 +2700,8 @@ function mostrarProductos(categoria, guardar=true){
 
   if(esXiaomi){
     aplicarFiltroXiaomi('redmi');
+  }else if(esHogar){
+    aplicarFiltroHogar('todos');
   }else{
     empty.style.display=visible?'none':'block';
   }
